@@ -18,18 +18,18 @@ $ifsc = $row1['ifsc'];
 $result1 = mysqli_query($db, "SELECT idloan FROM loan WHERE idloan='$loanid'") or die('SQL Error: ' . mysqli_error($db));
 $row1 = mysqli_fetch_array($result1);
 $rloanid = $row1[0];
-$result1 = mysqli_query($db, "SELECT custid FROM loan WHERE custid='$custid'") or die('SQL Error: ' . mysqli_error($db));
+$result1 = mysqli_query($db, "SELECT custid FROM customer WHERE custid='$custid'") or die('SQL Error: ' . mysqli_error($db));
 $row1 = mysqli_fetch_array($result1);
 
 if ($custid != $row1[0]) {
-    $msg = "Account(CUstomer id) does not exist";
+    $msg = "Account(Customer id) does not exist";
     echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
     header("Refresh: 1,url=tabs10.php");
 }
 else{
 if(isset($_POST['insert'])){
 if($rloanid != $loanid){
-$sqli = "INSERT INTO loan(idloan,ltype,amount,interest,balance,custid) VALUES ('$loanid', '$ltype', '$amount','$roi','$balance','$custid')";
+$sqli = "INSERT INTO loan(idloan,type,amount,interest,balance,custid) VALUES ('$loanid', '$ltype', '$amount','$roi','$balance','$custid')";
 if ($stmti = mysqli_prepare($db, $sqli)) {
         //mysqli_stmt_bind_param($stmti, "isdddi", $loanid, $ltype, $amount,$roi, $balance,$custid);
             // Attempt to execute the prepared statement
