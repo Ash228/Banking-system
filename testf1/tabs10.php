@@ -9,11 +9,14 @@
     <body>
       <div class="sidenav">
         <br><br>
-        <a onclick="document.getElementById('id04').style.display='block'" >View Profile</a> <br>
+       <a onclick="document.getElementById('id04').style.display='block'" >View Profile</a> <br>
         <a onclick="document.getElementById('id05').style.display='block'" >Edit profile</a>  <br>
         <a onclick="document.getElementById('id01').style.display='block'" >Add new Customer</a> <br>
         <a onclick="document.getElementById('id02').style.display='block'" >Delete Customer</a>  <br>
-        <a onclick="document.getElementById('id03').style.display='block'" >Add new Deposit</a>  <br>
+        <a onclick="document.getElementById('id06').style.display='block'" >Block/Unblock Transaction</a>  <br>
+        <a onclick="document.getElementById('id03').style.display='block'" >Create new Deposit</a>  <br>
+        <a onclick="document.getElementById('id07').style.display='block'" >Insert Loan Records</a>  <br>
+        <a onclick="document.getElementById('id08').style.display='block'" >Update Loan Records</a>  <br>
         <a onclick="openNav()">Transaction Report</a> <br>
         <a href="loanrep.php">Loan Report</a><br>
         <a onclick="window.location.href = 'index.php';" >Logout</a>
@@ -101,6 +104,68 @@
                   </div>
                 </form>
               </div>
+	    
+	    <div id="id07" class="modal" >
+          <form class="modal-content animate" method="POST" action="insertloan.php">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id07').style.display='none'" class="close" title="Close">&times;</span>
+            </div>
+            <div class="container">
+                <h1 style="text-align: center; font-size: 20px; ">Insert/Update Loan Records</h1>
+
+                    <label for="loanid"><b>Loan Id</b></label><br>
+                    <input type="number" placeholder="Enter loanid"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required name="loanid" ><br>
+
+                    <label for="ltype"><b>Type</b></label><br>
+                    <input type="text" placeholder="Enter Loan type" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" required name="ltype" ><br>
+
+                    <label for="amount"><b>Amount</b></label><br>
+                    <input type="number" placeholder="Enter loan amount"required name="amount"><br>
+
+                    <label for="roi"><b>Interest rate</b></label><br>
+                    <input type="number" placeholder="Enter Rate of interest"required name="roi"><br>
+
+                    <label for="balance"><b>Balance</b></label><br>
+                    <input type="number"  placeholder="Enter Balance amount" required name="balance"><br>
+
+                    <label for="custid"><b>Customer id </b></label><br>
+                    <input type="number" placeholder="Enter Customer id" name="custid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" required><br>
+
+                    <button type="submit" name="insert">Insert</button>
+ 
+                  </div>
+                  <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="window.location.href= 'index.php'" class="cancelbtn">Logout</button>
+                  </div>
+                </form>
+              </div>
+
+              <div id="id08" class="modal" >
+          <form class="modal-content animate" method="POST" action="insertloan.php">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id07').style.display='none'" class="close" title="Close">&times;</span>
+            </div>
+            <div class="container">
+                <h1 style="text-align: center; font-size: 20px; ">Update Loan Records</h1>
+
+                    <label for="loanid"><b>Loan Id</b></label><br>
+                    <input type="number" placeholder="Enter loanid"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required name="loanid" ><br>
+
+                    <label for="roi"><b>Interest rate</b></label><br>
+                    <input type="number" placeholder="Enter Rate of interest"required name="roi"><br>
+
+                    <label for="balance"><b>Balance</b></label><br>
+                    <input type="number"  placeholder="Enter Balance amount" required name="balance"><br>
+
+                    <button type="submit" name="update">Update</button>
+ 
+                  </div>
+                  <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="window.location.href= 'index.php'" class="cancelbtn">Logout</button>
+                  </div>
+                </form>
+              </div>
+	    
       <div id="id01" class="modal">
         <form class="modal-content animate" method="POST" action="insertcust.php">
           <div class="imgcontainer">
