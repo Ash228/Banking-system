@@ -57,16 +57,16 @@
                 <input type="date" value="<?php echo "$row[6]"; ?>" name="bdate" disabled><br>
 
                 <label for="gender"><b>Gender</b></label><br>
-                <input type="text" value="<?php echo "$row[7]"; ?>" name="gender" disabled><br>
+                <input type="text" value="<?php echo "$row[9]"; ?>" name="gender" disabled><br>
 
                 <label for="role"><b>Role</b></label><br>
-                <input type="text" value="<?php echo "$row[8]"; ?>" name="role" disabled><br>
+                <input type="text" value="<?php echo "$row[10]"; ?>" name="role" disabled><br>
 
                 <label for="salary"><b>Salary</b></label><br>
-                <input type="number" value="<?php echo "$row[9]"; ?>" name="salary" disabled><br>
+                <input type="number" value="<?php echo "$row[7]"; ?>" name="salary" disabled><br>
 
                 <label for="bank"><b>Branch IFSC</b></label><br>
-                <input type="text" value="<?php echo "$row[10]"; ?>" name="bank" ><br>
+                <input type="text" value="<?php echo "$row[8]"; ?>" name="bank" ><br>
 
               </div>
               <div class="container" style="background-color:#f1f1f1">
@@ -96,6 +96,10 @@
 
                     <label for="bdate"><b>Birth date</b></label><br>
                     <input type="date"  placeholder="Enter date of birth" name="bdate" required><br>
+		    
+		                <label for="gender"><b>Gender</b></label><br>
+                    <input type="text" placeholder="Gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required name="address" ><br>
+
 
                     <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
                   </div>
