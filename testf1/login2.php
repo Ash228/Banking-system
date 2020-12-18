@@ -29,6 +29,7 @@ if (($row['custid'] == $custid) && ($row['password'] == $password)) {
     $de                = stripcslashes($row2[0]);
     $de                = mysqli_real_escape_string($db, $de);
     $_SESSION['depid'] = $de;
+    $_SESSION['status'] = "Active";
     header("location: tabs1.php");
 } else {
     $msg = "Your Username or Password is invalid";

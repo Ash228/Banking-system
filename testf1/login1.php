@@ -16,11 +16,12 @@ $result = mysqli_query($db, "SELECT * FROM employee WHERE empid = '$empid' and p
 $row = mysqli_fetch_array($result);
 
 if (($row['empid'] == $empid) && ($row['password'] == $password)) {
+    $_SESSION['status'] = "Active";
     header("location: tabs10.php");
 } else {
     $msg = "Your Username or Password is invalid";
 	echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-	header("Refresh: 0,url=index.php");
+	header("Refresh: 0,url=tabs10.php");
 }
 mysqli_close($db);
 ?> 

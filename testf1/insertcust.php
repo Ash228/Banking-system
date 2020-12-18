@@ -9,6 +9,7 @@ $address           = mysqli_real_escape_string($db, $_POST['address']);
 $phone             = mysqli_real_escape_string($db, $_POST['phone']);
 $mail              = mysqli_real_escape_string($db, $_POST['mail']);
 $bdate             = mysqli_real_escape_string($db, $_POST['bdate']);
+$gender            = mysqli_real_escape_string($db, $_POST['gender']);
 function random_password($length = 10)
 {
     $alphabet    = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_-=+;:,.?';
@@ -51,11 +52,11 @@ $row1 = mysqli_fetch_array($result1);
 $ifsc = $row1['ifsc'];
 $ifsc = mysqli_real_escape_string($db, $ifsc);
 
-$sqli = "INSERT INTO customer VALUES ('$custid', '$name', '$address','$phone','$mail','$bdate','$psw')";
+$sqli = "INSERT INTO customer VALUES ('$custid', '$name', '$address','$phone','$mail','$bdate','$psw','$gender')";
 
 if ($stmti = mysqli_prepare($db, $sqli)) {
     if (substr($accn, 0, 4) == substr($ifsc, -4)) {
-        mysqli_stmt_bind_param($stmti, "ississs", $custid, $name, $address, $phone, $mail, $bdate, $psw);
+        mysqli_stmt_bind_param($stmti, "ississss", $custid, $name, $address, $phone, $mail, $bdate, $psw, $gender);
         if (mysqli_stmt_execute($stmti)) {
             $sql = "INSERT INTO account VALUES ($accno, $balance, '$interest',$custid,'$ifsc','$mpin')";
             if ($stmt = mysqli_prepare($db, $sql)) {
