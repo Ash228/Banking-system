@@ -103,7 +103,7 @@ if($_SESSION['status'] != "Active")
                     <input type="date"  placeholder="Enter date of birth" name="bdate" required><br>
 		    
 		                <label for="gender"><b>Gender</b></label><br>
-                    <input type="text" placeholder="Gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required name="address" ><br>
+                    <input type="text" placeholder="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required name="gender" ><br>
 
 
                     <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
