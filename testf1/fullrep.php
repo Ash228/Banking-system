@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+if($_SESSION['status'] != "Active") 
+{
+    header("location:  index.php");
+}
+?>
 	<html>
 
 	<head>
@@ -108,8 +114,8 @@
                     					while ($row = mysqli_fetch_row($result1)) {
                         					echo '<tr>
 											<td>'.$row[2].'</td>
-											<td>'.$row[1].'</td>
 											<td>'.$row[3].'</td>
+											<td>'.$row[1].'</td>
 											</tr>';
                     					}
                     					mysqli_free_result($result1);

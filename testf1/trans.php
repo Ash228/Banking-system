@@ -31,6 +31,8 @@ $mpind = $row[0];
 $result = mysqli_query($db, "SELECT blocked FROM account WHERE accno = '$accno'") or die('SQL Error: ' . mysqli_error($db));
 $row  = mysqli_fetch_array($result);
 $blocked = $row[0];
+if($blocked == 0)
+{
 if ($mpin == $mpind) {
     if ($amount > $abal) {
         echo "enter an amount less than your current balance $abal";
@@ -73,10 +75,10 @@ if ($mpin == $mpind) {
     $msg = "Incorrect mpin";
     echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
     header("Refresh: 0,url=tabs1.php");
+        }
 }
-/*}
 else{
-    $msg = "Account blocked";
+    $msg = "Account blocked, please contact branch";
     echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-    header("Refresh: 0,url=tabs1.php");
-}*/
+    header("Refresh: 5,url=tabs1.php");
+}

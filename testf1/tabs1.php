@@ -92,7 +92,7 @@
 
     $custid = mysqli_real_escape_string($db, $custid);
     $accno = mysqli_real_escape_string($db, $accno);
-    $query = "select balance, interest,ifsc from account where custid=$custid and accno=$accno" ;
+    $query = "select balance, interest,ifsc from banking.account where custid=$custid and accno=$accno" ;
     $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
     $row = mysqli_fetch_array($result);
     mysqli_close($db);
