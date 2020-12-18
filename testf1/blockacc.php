@@ -10,7 +10,7 @@ $row1 = mysqli_fetch_array($result1);
 if ($accID != $row1[0]) {
     $msg = "Account does not exist";
     echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-    header("Refresh: 5,url=tabs10.php");
+    header("Refresh: 1,url=tabs10.php");
 }
 else{
 if(isset($_POST['block']))
@@ -22,16 +22,16 @@ if(isset($_POST['block']))
             if (mysqli_stmt_execute($stmti)) {
                 $msg = "Account blocked";
 				echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-				header("Refresh: 5,url=tabs10.php");
+				header("Refresh: 0,url=tabs10.php");
             } else {
                 $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 				echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-				header("Refresh: 5,url=tabs10.php");
+				header("Refresh: 1,url=tabs10.php");
             }
         } else {
             $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 			echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-			header("Refresh: 5,url=tabs10.php");
+			header("Refresh: 1,url=tabs10.php");
         }
 }
 else
@@ -43,16 +43,16 @@ else
             if (mysqli_stmt_execute($stmti)) {
                 $msg = "Account unblocked";
 				echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-				header("Refresh: 5,url=tabs10.php");
+				header("Refresh: 0,url=tabs10.php");
             } else {
                 $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 				echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-				header("Refresh: 5,url=tabs10.php");
+				header("Refresh:1,url=tabs10.php");
             }
         } else {
             $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 			echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-			header("Refresh: 5,url=tabs10.php");
+			header("Refresh: 1,url=tabs10.php");
         }
 }
 }
