@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+if($_SESSION['status'] != "Active") 
+{
+    header("location:  index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,14 +27,15 @@
 
 <div class="sidenav">
 
-  <a onclick="document.getElementById('id01').style.display='block'" >Account Info</a> <br><br>
-  <a onclick="document.getElementById('id03').style.display='block'" >Deposit Info</a>  <br><br>
-  <a onclick="document.getElementById('id05').style.display='block'" >View Profile</a>  <br><br>
-  <a onclick="document.getElementById('id02').style.display='block'" >Update Info</a>  <br><br>
-  <a onclick="openNav()">Transaction Report</a>  <br><br>
-  <a onclick="document.getElementById('id06').style.display='block'" >Add Beneficiary</a>  <br><br>
-  <a onclick="document.getElementById('id04').style.display='block'" >Funds Transfer</a>  <br><br>
-  <a onclick="window.location.href = 'index.php';">Logout</a>
+  <a onclick="document.getElementById('id01').style.display='block'" >Account Info</a> <br>
+  <a onclick="document.getElementById('id03').style.display='block'" >Deposit Info</a>  <br>
+  <a onclick="document.getElementById('id05').style.display='block'" >View Profile</a>  <br>
+  <a onclick="document.getElementById('id02').style.display='block'" >Update Info</a>  <br>
+  <a onclick="openNav()">Transaction Report</a>  <br>
+  <a href="loans.php">Active Loans</a> <br>
+  <a onclick="document.getElementById('id06').style.display='block'" >Add Beneficiary</a>  <br>
+  <a onclick="document.getElementById('id04').style.display='block'" >Funds Transfer</a>  <br>
+  <a onclick="window.location.href = 'logout.php';">Logout</a>
 </div>
 
 <div id="id03" class="modal">
