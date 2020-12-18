@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php session_start(); 
+if($_SESSION['status'] != "Active") 
+{
+    header("location:  index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
