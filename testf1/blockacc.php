@@ -22,7 +22,7 @@ if(isset($_POST['block']))
             if (mysqli_stmt_execute($stmti)) {
                 $msg = "Account blocked";
 				echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-				header("Refresh: 0,url=tabs10.php");
+				header("Refresh: 1,url=tabs10.php");
             } else {
                 $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 				echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
@@ -43,7 +43,7 @@ else
             if (mysqli_stmt_execute($stmti)) {
                 $msg = "Account unblocked";
 				echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-				header("Refresh: 0,url=tabs10.php");
+				header("Refresh: 1,url=tabs10.php");
             } else {
                 $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 				echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
