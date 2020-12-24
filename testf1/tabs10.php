@@ -113,6 +113,25 @@ if($_SESSION['status'] != "Active")
                   </div>
                 </form>
               </div>
+
+              <div id="id06" class="modal" >
+          <form class="modal-content animate" method="POST" action="blockacc.php">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id06').style.display='none'" class="close" title="Close">&times;</span>
+            </div>
+            <div class="container">
+                <h1 style="text-align: center; font-size: 20px; ">Edit Profile</h1>
+
+                    <label for="accid"><b>Name</b></label><br>
+                    <input type="text" placeholder="Enter Account Number"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" required name="accid" ><br>
+
+                    <button type="submit" name="block">Block</button><button type="submit" name="unblock">Unblock</button>
+                  </div>
+                  <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="window.location.href= 'index.php'" class="cancelbtn">Logout</button>
+                  </div>
+                </form>
+              </div>             
 	    
 	    <div id="id07" class="modal" >
           <form class="modal-content animate" method="POST" action="insertloan.php">
@@ -152,7 +171,7 @@ if($_SESSION['status'] != "Active")
               <div id="id08" class="modal" >
           <form class="modal-content animate" method="POST" action="insertloan.php">
             <div class="imgcontainer">
-              <span onclick="document.getElementById('id07').style.display='none'" class="close" title="Close">&times;</span>
+              <span onclick="document.getElementById('id08').style.display='none'" class="close" title="Close">&times;</span>
             </div>
             <div class="container">
                 <h1 style="text-align: center; font-size: 20px; ">Update Loan Records</h1>

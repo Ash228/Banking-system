@@ -45,12 +45,22 @@ if ($mpin == $mpind) {
                 if ($stmt = mysqli_prepare($db, $sql)) {
                     mysqli_stmt_bind_param($stmt, "sssss", $date, $amount, $custid, $accno, $taccno);
                     if (mysqli_stmt_execute($stmt)) {
-						$result = mysqli_query($db, "SELECT balance from account where accno='$accno'") or die('SQL Error: ' . mysqli_error($db));
-						$row = mysqli_fetch_array($result);
-						$msg = "Updated balance is ".$row[0];
-						echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-                        header("Refresh: 0,url=tabs1.php");
-                    } else {
+                        $balance = $abal - $amount;
+                        $sqli = "UPDATE account set balance=$balance where accno=$accno";
+                        if ($stmti = mysqli_prepare($db, $sqli)) {
+                            mysqli_stmt_bind_param($stmti, "s", $balance);
+                            if (mysqli_stmt_execute($stmti)) {
+						        $result = mysqli_query($db, "SELECT balance from account where accno='$accno'") or die('SQL Error: ' . mysqli_error($db));
+						        $row = mysqli_fetch_array($result);
+						        $msg = "Updated balance is ".$row[0];
+						        echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
+                                header("Refresh: 0,url=tabs1.php");
+                            }else {
+                                $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
+                                echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
+                                header("Refresh: 0,url=tabs1.php");
+                            } 
+                        }else {
                         $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 						echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 						header("Refresh: 0,url=tabs1.php");
@@ -65,7 +75,11 @@ if ($mpin == $mpind) {
 				echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 				header("Refresh: 0,url=tabs1.php");
             }
-        } else {
+        }else {
+            $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
+            echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
+            header("Refresh: 0,url=tabs1.php");
+        }} else {
             $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 			echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 			header("Refresh: 0,url=tabs1.php");
