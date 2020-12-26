@@ -88,8 +88,8 @@ button:hover {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(164, 222, 255); /* Fallback color */
+    background-color: rgba(158, 240, 255, 0.651); /* Black w/ opacity */
     padding-top: 60px;
 }
 
@@ -97,7 +97,7 @@ button:hover {
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto 10% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
+    border: 1px solid rgb(177, 230, 255);
     width: 60%; /* Could be more or less, depending on screen size */
 
 }
@@ -224,3 +224,31 @@ button:hover {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: rgb(25, 172, 216);
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: rgba(56, 221, 250, 0.63);
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #34f5fc9f;
+    color: rgba(47, 236, 243, 0.733);
+  }
