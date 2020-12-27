@@ -36,7 +36,7 @@ if($_SESSION['status'] != "Active")
     <button class="dropbtn">Reports<i class="fa fa-caret-down"></i> </button>
     <div class="dropdown-content"> 
       <a href="fullrep.php">Account Transaction Report</a> 
-      <a href="day.php">Account Transactions in last 30 days</a> 
+      <a href="tday.php">Account Transactions in last 30 days</a> 
       <a href="fday.php">Account Transactions in last 15 days</a> 
       <a href="deprep.php">Interest Added to Deposits</a> 
       <a href="loans.php">Active Loans</a> 
