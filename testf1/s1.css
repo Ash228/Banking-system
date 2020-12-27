@@ -177,12 +177,15 @@ span.psw {
 }
 
 .heading{
-    font-size:30px;
+    font-size: 32px;
+    color: white;
 }
 
 .about-us{
+    color: white;
     cursor: pointer;
 }
 .about-us:hover{
-    text-decoration: darkcyan;
+    text-decoration: underline;
+    color: black;
 }
