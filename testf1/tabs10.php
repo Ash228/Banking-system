@@ -14,8 +14,16 @@ if($_SESSION['status'] != "Active")
     <body>
       <div class="topnav">
         <br><br>
+        <div class="dropdown">
+    <button class="dropbtn">Profile
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
        <a onclick="document.getElementById('id04').style.display='block'" >View Profile</a> 
         <a onclick="document.getElementById('id05').style.display='block'" >Edit profile</a>
+
+        </div>
+  </div> 
         <div class="dropdown">
     <button class="dropbtn">Add/Remove user
       <i class="fa fa-caret-down"></i>
