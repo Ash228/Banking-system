@@ -12,20 +12,71 @@ if($_SESSION['status'] != "Active")
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
     <body>
-      <div class="sidenav">
+      <div class="topnav">
         <br><br>
-       <a onclick="document.getElementById('id04').style.display='block'" >View Profile</a> <br>
-        <a onclick="document.getElementById('id05').style.display='block'" >Edit profile</a>  <br>
-        <a onclick="document.getElementById('id01').style.display='block'" >Add new Customer</a> <br>
-        <a onclick="document.getElementById('id02').style.display='block'" >Delete Customer</a>  <br>
-        <a onclick="document.getElementById('id06').style.display='block'" >Block/Unblock Transaction</a>  <br>
-        <a onclick="document.getElementById('id03').style.display='block'" >Create new Deposit</a>  <br>
-        <a onclick="document.getElementById('id07').style.display='block'" >Insert Loan Records</a>  <br>
-        <a onclick="document.getElementById('id08').style.display='block'" >Update Loan Records</a>  <br>
-        <a onclick="openNav()">Transaction Report</a> <br>
-        <a href="loanrep.php">Loan Report</a><br>
-        <a onclick="window.location.href = 'index.php';" >Logout</a>
-      </div>
+        <div class="dropdown">
+    <button class="dropbtn">Profile
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+       <a onclick="document.getElementById('id04').style.display='block'" >View Profile</a> 
+        <a onclick="document.getElementById('id05').style.display='block'" >Edit profile</a>
+
+        </div>
+  </div> 
+        <div class="dropdown">
+    <button class="dropbtn">Add/Remove user
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+    <a onclick="document.getElementById('id01').style.display='block'" >Add new Customer</a> 
+        <a onclick="document.getElementById('id02').style.display='block'" >Delete Customer</a> 
+    <?php
+     error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
+     include 'dbcon.php';
+     $empid = $_SESSION['empid'];
+     $empid = mysqli_real_escape_string($db, $empid);
+     $query = "SELECT mgrid from branch where mgrid='$empid'" ;
+     $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
+     $row=0;
+     $row = mysqli_fetch_array($result);
+     if($row[0]==$empid){?>
+      <a onclick="document.getElementById('id09').style.display='block'" >Add new Employee</a> 
+      <a onclick="document.getElementById('id10').style.display='block'" >Delete Employee</a> 
+     <?php }
+   ?>
+
+    </div>
+  </div>  
+                <a onclick="document.getElementById('id06').style.display='block'" >Block/Unblock Transaction</a>  
+        <a onclick="document.getElementById('id03').style.display='block'" >Create new Deposit</a>  
+        <div class="dropdown">
+    <button class="dropbtn">Loans
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+        <a onclick="document.getElementById('id07').style.display='block'" >Insert Loan Records</a>  
+        <a onclick="document.getElementById('id08').style.display='block'" >Update Loan Records</a>  
+     </div>
+     </div>
+     <div class="dropdown">
+            <button class="dropbtn">Reports <i class="fa fa-caret-down"></i> </button>
+            <div class="dropdown-content"> <a href="empfullrep.php">Account Transaction Report</a> <a href="etday.php">Account Transactions in last 30 days</a> <a href="efday.php">Account Transactions in last 15 days</a> <a href="edeprep.php">Interest Added to Deposits</a> <a href="loanrep.php">Loan Report</a> </div>
+        </div> <a onclick="window.location.href = 'index.php';">Logout</a> </div>
+      <div class='dash'>
+    <?php
+        error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
+          include 'dbcon.php';
+          $empid = $_SESSION['empid'];
+          $empid = mysqli_real_escape_string($db, $empid);
+          $query = "SELECT * from employee where empid='$empid'" ;
+          $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
+          $row = mysqli_fetch_array($result);
+        ?>
+        <h2 style="text-align: center; font-size: 20px; ">D</h2>
+                <h5> <?php echo " $row[0] "; ?></h5>
+                <br>
+    </div>
       <div id="id04" class="modal">
         <?php
         error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
@@ -261,6 +312,81 @@ if($_SESSION['status'] != "Active")
           </div>
 
         </form>
+
+
+        <div id="id09" class="modal">
+        <form class="modal-content animate" method="POST" action="insertemp.php">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id09').style.display='none'" class="close" title="Close">&times;</span>
+          </div>
+          <div class="container">
+            <h2 style="text-align: center; font-size: 20px; ">Add new Employee</h2>
+            <label for="empidi"><b>Employee id </b></label><br>
+            <input type="number" placeholder="Enter Employee id" name="empidi" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+
+            <label for="name"><b>Name</b></label><br>
+            <input type="text" placeholder="Enter full name" name="name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="45" required><br>
+
+            <label for="address"><b>Address</b></label><br>
+            <input type="text" placeholder="Enter address" name="address" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="100" required><br>
+
+            <label for="phone"><b>Phone number</b></label><br>
+            <input type="number" placeholder="Enter phone number" name="phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+
+            <label for="mail"><b>Email id</b></label><br>
+            <input type="email" placeholder="Enter email address" name="mail" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35" ><br>
+
+            <label for="bdate"><b>Birth date</b></label><br>
+            <input type="date" placeholder="Enter birth date" name="bdate" required><br>
+
+            <label for="gender"><b>Gender</b></label><br>
+            <input type="text" placeholder="Enter gender" name="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+            
+            <label for="role"><b>Role</b></label><br>
+            <input type="text" placeholder="Enter role" name="role" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" required><br>
+
+            <label for="salary"><b>Salary</b></label><br>
+            <input type="number" placeholder="Enter Salary" name="salary" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" required><br>
+
+            
+            <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
+            <br> <br>
+            <p>
+              You can only add employees for your own branch
+            </p>
+
+          </div>
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="window.location.href= 'index.php'" class="cancelbtn">Logout</button>
+          </div>
+        </form>
+
+      </div>
+
+      <div id="id10" class="modal">
+
+        <form class="modal-content animate" method="POST" action="delemp.php" >
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id10').style.display='none'" class="close" title="Close">&times;</span>
+          </div>
+          <div class="container">
+            <h3 style="text-align: center; font-size: 20px; ">Delete Employee</h3>
+            <label for="empidd"><b>Employee id</b></label><br>
+            <input type="number" placeholder="Enter Employee id" name="empidd" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+
+            <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
+            <br> <br>
+          </div>
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="window.location.href= 'index.php'" class="cancelbtn">Logout</button>
+          </div>
+
+        </form>
+
+
+
+
+
       </div>
       <div id="id03" class="modal fade">
         <form class="modal-content animate" method="POST" action="insertaccf.php" >
