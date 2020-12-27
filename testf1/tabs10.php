@@ -312,7 +312,7 @@ if($_SESSION['status'] != "Active")
           </div>
 
         </form>
-
+      </div>
 
         <div id="id09" class="modal">
         <form class="modal-content animate" method="POST" action="insertemp.php">

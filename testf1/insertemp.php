@@ -2,8 +2,8 @@
 session_start();
 error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
 include 'dbcon.php';
-$_SESSION['empid'] = $_POST['empid'];
-$empidi            = mysqli_real_escape_string($db, $_SESSION['empidi']);
+
+$empidi            = mysqli_real_escape_string($db, $_POST['empidi']);
 $name              = mysqli_real_escape_string($db, $_POST['name']);
 $address           = mysqli_real_escape_string($db, $_POST['address']);
 $phone             = mysqli_real_escape_string($db, $_POST['phone']);
@@ -36,7 +36,6 @@ $result1 = mysqli_query($db, "SELECT * FROM employee WHERE empid = '$empid'") or
 $row1 = mysqli_fetch_array($result1);
 $ifsc = $row1['ifsc'];
 $ifsc = mysqli_real_escape_string($db, $ifsc);
-
 $sqli = "INSERT INTO employee VALUES ('$empidi', '$name', '$address','$phone','$mail','$psw','$bdate','$salary','$ifsc','$gender','$role')";
 
 if ($stmti = mysqli_prepare($db, $sqli)) {
