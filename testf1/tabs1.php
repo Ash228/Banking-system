@@ -8,8 +8,9 @@ if($_SESSION['status'] != "Active")
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
-	<link rel="stylesheet" type="text/css" href="s3.css" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+  <link rel="stylesheet" type="text/css" href="s3.css" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script>
 		/* Open when someone clicks on the span element */
@@ -25,17 +26,25 @@ if($_SESSION['status'] != "Active")
 </head>
 <body>
 
-<div class="sidenav">
-
-  <a onclick="document.getElementById('id01').style.display='block'" >Account Info</a> <br>
-  <a onclick="document.getElementById('id03').style.display='block'" >Deposit Info</a>  <br>
-  <a onclick="document.getElementById('id05').style.display='block'" >View Profile</a>  <br>
-  <a onclick="document.getElementById('id02').style.display='block'" >Update Info</a>  <br>
-  <a onclick="openNav()">Transaction Report</a>  <br>
-  <a href="loans.php">Active Loans</a> <br>
-  <a onclick="document.getElementById('id06').style.display='block'" >Add Beneficiary</a>  <br>
-  <a onclick="document.getElementById('id04').style.display='block'" >Funds Transfer</a>  <br>
-  <a onclick="window.location.href = 'logout.php';">Logout</a>
+<div class="topnav">
+  <a onclick="document.getElementById('id01').style.display='block'" >Account Info</a>
+  <a onclick="document.getElementById('id03').style.display='block'" >Deposit Info</a>
+  <a onclick="document.getElementById('id05').style.display='block'" >View Profile</a>
+  <a onclick="document.getElementById('id02').style.display='block'" >Update Info</a> 
+  <script>/*<a onclick="openNav()">Transaction Report</a> */</script>
+  <div class="dropdown">
+    <button class="dropbtn">Reports<i class="fa fa-caret-down"></i> </button>
+    <div class="dropdown-content"> 
+      <a href="fullrep.php">Account Transaction Report</a> 
+      <a href="tday.php">Account Transactions in last 30 days</a> 
+      <a href="fday.php">Account Transactions in last 15 days</a> 
+      <a href="deprep.php">Interest Added to Deposits</a> 
+      <a href="loans.php">Active Loans</a> 
+    </div>
+  </div>
+  <a onclick="document.getElementById('id06').style.display='block'" >Add Beneficiary</a>
+  <a onclick="document.getElementById('id04').style.display='block'" >Funds Transfer</a> 
+  <a onclick="window.location.href = 'logout.php';"class="w3-right">Logout</a>
 </div>
 
 <div id="id03" class="modal">
@@ -43,7 +52,7 @@ if($_SESSION['status'] != "Active")
     error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
     include 'dbcon.php';
     $custid = $_SESSION['custid'];
-	$depid = $_SESSION['depid'];
+	  $depid = $_SESSION['depid'];
     //prevent mysql injection
     $custid= stripcslashes($custid);
 
