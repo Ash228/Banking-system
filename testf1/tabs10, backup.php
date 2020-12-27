@@ -52,10 +52,24 @@ if($_SESSION['status'] != "Active")
         <a onclick="document.getElementById('id08').style.display='block'" >Update Loan Records</a>  
      </div>
      </div>
-        <a onclick="openNav()">Transaction Report</a> 
-        <a href="loanrep.php">Loan Report</a>
-        <a onclick="window.location.href = 'index.php';" >Logout</a>
-      </div>
+     <div class="dropdown">
+            <button class="dropbtn">Reports <i class="fa fa-caret-down"></i> </button>
+            <div class="dropdown-content"> <a href="empfullrep.php">Account Transaction Report</a> <a href="etday.php">Account Transactions in last 30 days</a> <a href="efday.php">Account Transactions in last 15 days</a> <a href="edeprep.php">Interest Added to Deposits</a> <a href="loanrep.php">Loan Report</a> </div>
+        </div> <a onclick="window.location.href = 'index.php';">Logout</a> </div>
+      <div class='dash'>
+    <?php
+        error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
+          include 'dbcon.php';
+          $empid = $_SESSION['empid'];
+          $empid = mysqli_real_escape_string($db, $empid);
+          $query = "SELECT * from employee where empid='$empid'" ;
+          $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
+          $row = mysqli_fetch_array($result);
+        ?>
+        <h2 style="text-align: center; font-size: 20px; ">D</h2>
+                <h5> <?php echo " $row[0] "; ?></h5>
+                <br>
+    </div>
       <div id="id04" class="modal">
         <?php
         error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
