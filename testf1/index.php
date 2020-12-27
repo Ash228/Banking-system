@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <div class="w3-container">
-        <div class='w3-twothird w3-xxlarge'>
+    <div class="w3-container" style="background-color: rgb(25, 172, 216);">
+        <div class='w3-twothird heading'>
             <p>Banking System</p>
         </div>
         <div class='w3-bar w3-third nav w3-large'>
