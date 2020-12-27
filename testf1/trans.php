@@ -31,6 +31,8 @@ $mpind = $row[0];
 $result = mysqli_query($db, "SELECT blocked FROM account WHERE accno = '$accno'") or die('SQL Error: ' . mysqli_error($db));
 $row  = mysqli_fetch_array($result);
 $blocked = $row[0];
+if($blocked == 0)
+{
 if ($mpin == $mpind) {
     if ($amount > $abal) {
         echo "enter an amount less than your current balance $abal";
@@ -43,12 +45,22 @@ if ($mpin == $mpind) {
                 if ($stmt = mysqli_prepare($db, $sql)) {
                     mysqli_stmt_bind_param($stmt, "sssss", $date, $amount, $custid, $accno, $taccno);
                     if (mysqli_stmt_execute($stmt)) {
-						$result = mysqli_query($db, "SELECT balance from account where accno='$accno'") or die('SQL Error: ' . mysqli_error($db));
-						$row = mysqli_fetch_array($result);
-						$msg = "Updated balance is ".$row[0];
-						echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-                        header("Refresh: 0,url=tabs1.php");
-                    } else {
+                        $balance = $abal - $amount;
+                        $sqli = "UPDATE account set balance=$balance where accno=$accno";
+                        if ($stmti = mysqli_prepare($db, $sqli)) {
+                            mysqli_stmt_bind_param($stmti, "s", $balance);
+                            if (mysqli_stmt_execute($stmti)) {
+						        $result = mysqli_query($db, "SELECT balance from account where accno='$accno'") or die('SQL Error: ' . mysqli_error($db));
+						        $row = mysqli_fetch_array($result);
+						        $msg = "Updated balance is ".$row[0];
+						        echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
+                                header("Refresh: 0,url=tabs1.php");
+                            }else {
+                                $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
+                                echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
+                                header("Refresh: 0,url=tabs1.php");
+                            } 
+                        }else {
                         $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 						echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 						header("Refresh: 0,url=tabs1.php");
@@ -63,7 +75,11 @@ if ($mpin == $mpind) {
 				echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 				header("Refresh: 0,url=tabs1.php");
             }
-        } else {
+        }else {
+            $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
+            echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
+            header("Refresh: 0,url=tabs1.php");
+        }} else {
             $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 			echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 			header("Refresh: 0,url=tabs1.php");
@@ -73,10 +89,10 @@ if ($mpin == $mpind) {
     $msg = "Incorrect mpin";
     echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
     header("Refresh: 0,url=tabs1.php");
+        }
 }
-/*}
 else{
-    $msg = "Account blocked";
+    $msg = "Account blocked, please contact branch";
     echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-    header("Refresh: 0,url=tabs1.php");
-}*/
+    header("Refresh: 5,url=tabs1.php");
+}

@@ -8,10 +8,11 @@ $address = mysqli_real_escape_string($db, $_POST['address']);
 $phone   = mysqli_real_escape_string($db, $_POST['phone']);
 $mail    = mysqli_real_escape_string($db, $_POST['mail']);
 $bdate   = mysqli_real_escape_string($db, $_POST['bdate']);
+$gender  = mysqli_real_escape_string($db, $_POST['gender']);
 // Attempt insert query execution
-$sqli    = "UPDATE employee set name='$name', address='$address', phone=$phone, email='$mail', bdate='$bdate' where empid='$empid'";
+$sqli    = "UPDATE employee set name='$name', address='$address', phone=$phone, email='$mail', bdate='$bdate', gender='$gender' where empid='$empid'";
 if ($stmti = mysqli_prepare($db, $sqli)) {
-    mysqli_stmt_bind_param($stmti, "ississ", $empid, $name, $address, $phone, $mail, $bdate);
+    mysqli_stmt_bind_param($stmti, "ississs", $empid, $name, $address, $phone, $mail, $bdate, $gender);
     if (mysqli_stmt_execute($stmti)) {
         $msg = "Info updated!";
 		echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";

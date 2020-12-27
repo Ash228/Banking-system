@@ -17,7 +17,9 @@ if ($stmti = mysqli_prepare($db, $sqli)) {
     
     // Attempt to execute the prepared statement
     if (mysqli_stmt_execute($stmti)) {
-        header("Location: tabs1.php");
+        $msg = "Account information updated";
+        echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
+		header("Refresh: 0,url=tabs1.php");
     } else {
         $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 		echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";

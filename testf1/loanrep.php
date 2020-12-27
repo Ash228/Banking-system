@@ -32,10 +32,10 @@
           $row1 = mysqli_fetch_array($result);
           $ifsc= $row1['ifsc'];
           $ifsc = mysqli_real_escape_string($db, $ifsc);
-          $query = "CREATE OR REPLACE view loanview as select distinct l.idloan, l.ltype, l.amount, l.interest, l.balance, l.custid  from account a, employee e, loan l where e.ifsc=a.ifsc and a.custid=l.custid and e.ifsc='$ifsc' and l.balance!=0";
+          $query = "CREATE OR REPLACE view loanview as select distinct l.idloan, l.type, l.amount, l.interest, l.balance, l.custid  from account a, employee e, loan l where e.ifsc=a.ifsc and a.custid=l.custid and e.ifsc='$ifsc' and l.balance!=0";
           $resultx = mysqli_query($db, $query) or die('SQL 1Error: '. mysqli_error($db));
 
-          if (mysqli_multi_query($db, "SELECT idloan, ltype, amount, interest, balance, custid FROM loanview  order by idloan ")  or die('SQL Error: ' . mysqli_error($db))) {
+          if (mysqli_multi_query($db, "SELECT idloan, type, amount, interest, balance, custid FROM loanview  order by idloan ")  or die('SQL Error: ' . mysqli_error($db))) {
               do {
                   if ($result1 = mysqli_store_result($db)) {
                       while ($row = mysqli_fetch_row($result1)) {
@@ -77,10 +77,10 @@
             $row1 = mysqli_fetch_array($result);
             $ifsc= $row1['ifsc'];
             $ifsc = mysqli_real_escape_string($db, $ifsc);
-            $query = "CREATE OR REPLACE view loanview as select distinct l.idloan, l.ltype, l.amount, l.interest, l.balance, l.custid  from account a, employee e, loan l where e.ifsc=a.ifsc and a.custid=l.custid and e.ifsc='$ifsc' and l.balance=0";
+            $query = "CREATE OR REPLACE view loanview as select distinct l.idloan, l.type, l.amount, l.interest, l.balance, l.custid  from account a, employee e, loan l where e.ifsc=a.ifsc and a.custid=l.custid and e.ifsc='$ifsc' and l.balance=0";
             $resultx = mysqli_query($db, $query) or die('SQL 1Error: '. mysqli_error($db));
 
-             if (mysqli_multi_query($db, "SELECT idloan, ltype, amount, interest, balance, custid FROM loanview  order by idloan ")  or die('SQL Error: ' . mysqli_error($db))) {
+             if (mysqli_multi_query($db, "SELECT idloan, type, amount, interest, balance, custid FROM loanview  order by idloan ")  or die('SQL Error: ' . mysqli_error($db))) {
               do {
                   if ($result1 = mysqli_store_result($db)) {
                       while ($row = mysqli_fetch_row($result1)) {
