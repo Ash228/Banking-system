@@ -2,6 +2,7 @@
 session_start();
 include 'dbcon.php';
 error_reporting(E_ALL ^ E_WARNING);
+$adminid = $_SESSION['adminid'];
 $name    = mysqli_real_escape_string($db, $_POST['name']);
 $bdate   = mysqli_real_escape_string($db, $_POST['bdate']);
 $phone   = mysqli_real_escape_string($db, $_POST['phone']);

@@ -3,7 +3,7 @@ session_start();
 error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
 include 'dbcon.php';
 
-$empidi            = mysqli_real_escape_string($db, $_POST['empidi']);
+$empidi            = mysqli_real_escape_string($db, $_POST['empid']);
 $name              = mysqli_real_escape_string($db, $_POST['name']);
 $address           = mysqli_real_escape_string($db, $_POST['address']);
 $phone             = mysqli_real_escape_string($db, $_POST['phone']);
@@ -30,6 +30,11 @@ $psw = mysqli_real_escape_string($db, $psw);
 $role  = mysqli_real_escape_string($db, $_POST['role']);
 $salary   = mysqli_real_escape_string($db, $_POST['salary']);
 
+
+$result = mysqli_query($db, "SELECT ifsc from branch where ifsc='$ifsc'") or die('SQL Error: ' . mysqli_error($db));
+$row = mysqli_fetch_array($result);
+if($row['ifsc'])
+{
 $sqli = "INSERT INTO employee VALUES ('$empidi', '$name', '$address','$phone','$mail','$psw','$bdate','$salary','$ifsc','$gender','$role')";
 
 if ($stmti = mysqli_prepare($db, $sqli)) {
@@ -48,7 +53,11 @@ if ($stmti = mysqli_prepare($db, $sqli)) {
 	echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 	header("Refresh: 0,url=tabs11.php");
 }
-    
+}else{
+    $msg = "Branch does not exist, check IFSC";
+	echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
+	header("Refresh: 0,url=tabs11.php");
+}
 
 mysqli_stmt_close($stmti);
 mysqli_stmt_close($stmt);

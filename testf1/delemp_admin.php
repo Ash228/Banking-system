@@ -4,22 +4,24 @@
 include 'dbcon.php';
 error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE ^ E_STRICT);
 
-$empidd = mysqli_real_escape_string($db, $_POST['empidd']);
+$empidd = mysqli_real_escape_string($db, $_POST['empid']);
 
-
+$result = mysqli_query($db, "SELECT empid from employee where empid='$empidd'") or die('SQL Error: ' . mysqli_error($db));
+$row = mysqli_fetch_array($result);
+if($row['empid'])
+{
 $sql    = "DELETE FROM employee WHERE empid='$empidd'";
 
 if ($stmt = mysqli_prepare($db, $sql)) {
     mysqli_stmt_bind_param($stmt, "i",$empidd);
-	$res=mysqli_stmt_execute($stmt);
 	
-    if (mysqli_stmt_affected_rows($stmt)==1){
+    if (mysqli_stmt_execute($stmt)){
 		$msg = "Employee removed";
 		echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 		header("Refresh: 0,url=tabs11.php");
 	} 
 	else {
-		$msg = "No such Employee id exists";
+		$msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 		echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 		header("Refresh: 0,url=tabs11.php");
 	}
@@ -28,9 +30,10 @@ else {
     $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 	echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 	header("Refresh: 0,url=tabs11.php");
-}}
+}
+}
 else{
-	$msg = "Employee does not belong to your branch";
+	$msg = "No such Employee id exists";
 	echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
 	header("Refresh: 0,url=tabs11.php");
 }

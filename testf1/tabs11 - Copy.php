@@ -134,7 +134,7 @@ if($_SESSION['status'] != "Active")
           <div class="container">
             <h2 style="text-align: center; font-size: 20px; ">Add new Branch</h2>
             <label for="ifsc"><b>Branch IFSC </b></label><br>
-            <input type="text" placeholder="Enter Branch IFSC" name="ifsc" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11" required><br>
+            <input type="text" placeholder="Enter Branch IFSC" name="ifsc" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" required><br>
 
             <label for="name"><b>Name</b></label><br>
             <input type="text" placeholder="Enter full name" name="name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="45" required><br>
@@ -145,10 +145,16 @@ if($_SESSION['status'] != "Active")
             <label for="phone"><b>Phone number</b></label><br>
             <input type="number" placeholder="Enter phone number" name="phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
 
+            <label for="mail"><b>Email id</b></label><br>
+            <input type="email" placeholder="Enter email address" name="mail" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35" ><br>
+
+            <label for="mgrid"><b>Manager id</b></label><br>
+            <input type="number" placeholder="Enter the Employee id of the Manager" name="mgrid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+
             <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
             <br> <br>
             <p>
-              Use 'Assign manager' option to assign the anager to the branch
+              Manager must be appointed after transfer to the branch
             </p>
 
           </div>
@@ -168,7 +174,7 @@ if($_SESSION['status'] != "Active")
           <div class="container">
             <h3 style="text-align: center; font-size: 20px; ">Delete Branch</h3>
             <label for="ifsc"><b>Branch IFSC </b></label><br>
-            <input type="text" placeholder="Enter Branch IFSC" name="ifsc" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11" required><br>
+            <input type="text" placeholder="Enter Branch IFSC" name="ifsc" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" required><br>
 
             <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
             <br> <br>
@@ -284,7 +290,7 @@ if($_SESSION['status'] != "Active")
             <input type="number" placeholder="Enter Salary" name="salary" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" ><br>
 
             <label for="ifsc"><b>IFSC</b></label><br>
-            <input type="text" placeholder="Enter Branch IFSC" name="ifsc" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11"><br>
+            <input type="text" placeholder="Enter Branch IFSC" name="ifsc" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13"><br>
 
             <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
             <p>
@@ -313,7 +319,7 @@ if($_SESSION['status'] != "Active")
             <input type="number" placeholder="Enter Employee id" name="empid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
 
             <label for="ifsc"><b>IFSC</b></label><br>
-            <input type="text" placeholder="Enter Branch IFSC" name="ifsc" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11" required><br>
+            <input type="text" placeholder="Enter Branch IFSC" name="ifsc" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" required><br>
 
             <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
             <br> <br>

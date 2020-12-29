@@ -115,7 +115,7 @@ DROP TABLE IF EXISTS `branch`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `branch` (
-  `ifsc` varchar(13) NOT NULL,
+  `ifsc` varchar(11) NOT NULL,
   `name` varchar(45) NOT NULL,
   `address` varchar(100) NOT NULL,
   `phone` decimal(10,0) unsigned NOT NULL,
