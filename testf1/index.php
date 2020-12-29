@@ -155,7 +155,7 @@
         <form class="modal-content animate" method="POST" action="login3.php">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close">&times;</span>
-                <img src="cust.jpg" alt="Avatar" class="avatar">
+                <img src="admin.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
