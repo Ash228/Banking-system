@@ -16,6 +16,8 @@
         </div>
         <div class='w3-bar w3-third nav w3-large'>
             <a onclick="document.getElementById('aboutUs').style.display='block'" class='w3-bar-item w3-right about-us'>About Us</a>
+            <a onclick="document.getElementById('id05').style.display='block'"class="w3-bar-item w3-right about-us">Admin Login</a>
+            
         </div>
     </div>
     <div class='w3-container w3-padding-row' style="margin-top: 40px;">
@@ -37,7 +39,7 @@
         </div>
     </div>
     <div class="w3-container w3-animate-opacity w3-half w3-container" id="aboutUs" style="display: none;">
-        <p class="w3-large"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        <p class="w3-medium"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
             in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur 
@@ -147,6 +149,58 @@
 			</div>
 		</form>
 	</div>
+
+    <div id="id05" class="modal">
+
+        <form class="modal-content animate" method="POST" action="login3.php">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close">&times;</span>
+                <img src="cust.jpg" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label for="usname"><b>Username</b></label>
+                <input type="number" placeholder="Enter Admin id" name="usname" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" required>
+
+                <button type="submit">Login</button><button type="reset">Reset</button>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id05').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw"><a onclick="document.getElementById('id06').style.display='block'" >Forgot password?</a></span>
+            </div>
+        </form>
+    </div>
+
+    <div id="id06" class="modal">
+        <form class="modal-content animate" method="POST" action="adminfor.php">
+			<div class="imgcontainer" style="cursor: pointer;">
+				<h1>Forgot Password</h1>
+                <span onclick="document.getElementById('id06').style.display='none'" class="close" title="Close">&times;</span>
+				<br><br>
+            </div>
+			
+			<div class="container">
+				<label for="uname"><b>Username </b></label>
+				<input type="number" placeholder="Enter Username" name="uname" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required>
+			
+				<label for="bdate"><b>Birth date</b></label>
+				<input type="date" placeholder="Enter birth date" name="bdate" required>
+			
+				<label for="psw"><b>New Password</b></label>
+				<input type="password" placeholder="Enter password" name="psw" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" required>
+			
+				<label for="psw1"><b>Confirm Password</b></label>
+				<input type="password" placeholder="Re-enter password" name="psw1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" required>
+			
+				<button type="submit">Submit</button><button type="reset">Reset</button>
+			</div>
+		</form>
+    </div>
+    
 </body>
 
 </html>
