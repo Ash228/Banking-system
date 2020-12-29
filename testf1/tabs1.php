@@ -12,17 +12,6 @@ if($_SESSION['status'] != "Active")
   <link rel="stylesheet" type="text/css" href="s3.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script>
-		/* Open when someone clicks on the span element */
-		function openNav() {
-			document.getElementById("myNav").style.width = "100%";
-		}
-
-		/* Close when someone clicks on the "x" symbol inside the overlay */
-		function closeNav() {
-			document.getElementById("myNav").style.width = "0%";
-		}
-	</script>
 </head>
 <body>
 
@@ -31,7 +20,6 @@ if($_SESSION['status'] != "Active")
   <a onclick="document.getElementById('id03').style.display='block'" >Deposit Info</a>
   <a onclick="document.getElementById('id05').style.display='block'" >View Profile</a>
   <a onclick="document.getElementById('id02').style.display='block'" >Update Info</a> 
-  <script>/*<a onclick="openNav()">Transaction Report</a> */</script>
   <div class="dropdown">
     <button class="dropbtn">Reports<i class="fa fa-caret-down"></i> </button>
     <div class="dropdown-content"> 
@@ -109,6 +97,7 @@ if($_SESSION['status'] != "Active")
     $custid = mysqli_real_escape_string($db, $custid);
     $accno = mysqli_real_escape_string($db, $accno);
     $query = "select balance, interest,ifsc from account where custid=$custid and accno=$accno" ;
+
     $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
     $row = mysqli_fetch_array($result);
     mysqli_close($db);
@@ -296,23 +285,6 @@ if($_SESSION['status'] != "Active")
     </div>
 
   </form>
-</div>
-
-
-    <!-- The overlay -->
-<div id="myNav" class="overlay">
-
-  <!-- Button to close the overlay navigation -->
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-  <!-- Overlay content -->
-  <div class="overlay-content">
-    <a href="fullrep.php">Account Report</a>
-    <a href="tday.php">Account Report Last 30 days</a>
-    <a href="fday.php">Account Report Last 15 days</a>
-	<a href="deprep.php">Deposit Interest Report</a>
-  </div>
-
 </div>
 
 

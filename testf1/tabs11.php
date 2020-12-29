@@ -43,6 +43,7 @@ if($_SESSION['status'] != "Active")
     <a onclick="document.getElementById('id02').style.display='block'" >Delete Branch</a> 
     <a onclick="document.getElementById('id03').style.display='block'" >Assign Manager to Branch</a> 
     </div>
+    </div> <a onclick="window.location.href = 'logout.php';"class="w3-right">Logout</a> </div>
   </div>  
     <?php
         error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
