@@ -62,7 +62,7 @@ if($_SESSION['status'] != "Active")
      <div class="dropdown">
             <button class="dropbtn">Reports <i class="fa fa-caret-down"></i> </button>
             <div class="dropdown-content"> <a href="empfullrep.php">Account Transaction Report</a> <a href="etday.php">Account Transactions in last 30 days</a> <a href="efday.php">Account Transactions in last 15 days</a> <a href="edeprep.php">Interest Added to Deposits</a> <a href="loanrep.php">Loan Report</a> </div>
-        </div> <a onclick="window.location.href = 'index.php';">Logout</a> </div>
+        </div> <a onclick="window.location.href = 'logout.php';">Logout</a> </div>
       <div class='dash'>
     <?php
         error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
@@ -139,22 +139,22 @@ if($_SESSION['status'] != "Active")
                 <h1 style="text-align: center; font-size: 20px; ">Edit Profile</h1>
 
                     <label for="name"><b>Name</b></label><br>
-                    <input type="text" placeholder="Enter Name"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="45" required name="name" ><br>
+                    <input type="text" placeholder="Enter Name"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="45" name="name" ><br>
 
                     <label for="address"><b>Address</b></label><br>
-                    <input type="text" placeholder="Enter Address" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="100" required name="address" ><br>
+                    <input type="text" placeholder="Enter Address" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="100" name="address" ><br>
 
                     <label for="phone"><b>Phone number</b></label><br>
-                    <input type="number" placeholder="Enter phone number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required name="phone" ><br>
+                    <input type="number" placeholder="Enter phone number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" name="phone" ><br>
 
-                    <label for="mail"><b>Email id</b></label><br>
-                    <input type="email" placeholder="Enter email id" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35" required name="mail"><br>
+                    <label for="email"><b>Email id</b></label><br>
+                    <input type="email" placeholder="Enter email id" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35"  name="email"><br>
 
                     <label for="bdate"><b>Birth date</b></label><br>
-                    <input type="date"  placeholder="Enter date of birth" name="bdate" required><br>
+                    <input type="date"  placeholder="Enter date of birth" name="bdate" ><br>
 		    
 		                <label for="gender"><b>Gender</b></label><br>
-                    <input type="text" placeholder="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required name="gender" ><br>
+                    <input type="text" placeholder="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" name="gender" ><br>
 
 
                     <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>

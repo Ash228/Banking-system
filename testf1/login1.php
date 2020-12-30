@@ -21,7 +21,7 @@ if (($row['empid'] == $empid) && ($row['password'] == $password)) {
 } else {
     $msg = "Your Username or Password is invalid";
 	echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-	header("Refresh: 0,url=tabs10.php");
+	header("Refresh: 0,url=index.php");
 }
 mysqli_close($db);
 ?> 

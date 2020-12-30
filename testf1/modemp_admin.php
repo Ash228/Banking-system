@@ -1,24 +1,15 @@
 <?php
 session_start();
+error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE);
 include 'dbcon.php';
-error_reporting(E_ALL ^ E_WARNING);
 
-$custid  = mysqli_real_escape_string($db, $_SESSION['custid']);
-/*$name    = mysqli_real_escape_string($db, $_POST['name']);
-$address = mysqli_real_escape_string($db, $_POST['address']);
-$phone   = mysqli_real_escape_string($db, $_POST['phone']);
-$mail  = mysqli_real_escape_string($db, $_POST['mail']);
-$bdate = mysqli_real_escape_string($db, $_POST['bdate']);
-$gender = mysqli_real_escape_string($db, $_POST['gender']);
-*/
-// Attempt insert query execution
-
+$empidi            = mysqli_real_escape_string($db, $_POST['empid']);
 $var = '';
 $val_arr = array();
-$query = "UPDATE customer SET";
+$query = "UPDATE employee SET";
 $comma = " ";
 foreach($_POST as $key => $val) {
-    if( !empty($val) && $key!="custid") {
+    if( !empty($val) && $key!="empid") {
         $query .= $comma . $key . " = " . mysqli_real_escape_string($db, $val);
         $comma = ", ";
        // echo "<script type=\"text/javascript\">alert(\"$val,$key\");</script>";
@@ -26,26 +17,26 @@ foreach($_POST as $key => $val) {
         array_push($val_arr, $val);
     }
 }
-$query = $query . " WHERE custid = '".$custid."' ";
-
-//$sqli  = "UPDATE customer set name='$name', address='$address', phone=$phone, email='$mail', bdate='$bdate', gender='$gender' where custid='$custid'";
+//echo "<script type=\"text/javascript\">alert(\"$query\");</script>";
+$query = $query . " WHERE empid = '".$empidi."' ";
+//echo "<script type=\"text/javascript\">alert(\"$query\");</script>";
 if ($stmti = mysqli_prepare($db, $query)) {
-    //mysqli_stmt_bind_param($stmti, "ississs", $custid, $name, $address, $phone, $mail, $bdate, $gender);
+    //mysqli_stmt_bind_param($stmti, "ississsssi", $empidi, $name, $address, $phone, $mail, $bdate, $gender, $ifsc, $role, $salary);
     mysqli_stmt_bind_param($stmti, $var, $val_arr);
     // Attempt to execute the prepared statement
     if (mysqli_stmt_execute($stmti)) {
         $msg = "Account information updated";
         echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-		header("Refresh: 0,url=tabs1.php");
+		header("Refresh: 0,url=tabs11.php");
     } else {
         $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 		echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-		header("Refresh: 0,url=tabs1.php");
+		header("Refresh: 0,url=tabs11.php");
     }
 } else {
     $msg = "ERROR: Could not execute query: $sql. " . mysqli_error($db);
 	echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
-	header("Refresh: 0,url=tabs1.php");
+	header("Refresh: 0,url=tabs11.php");
 }
 // Close statement
 mysqli_stmt_close($stmti);
