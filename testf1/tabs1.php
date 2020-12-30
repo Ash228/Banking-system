@@ -53,7 +53,8 @@ if($_SESSION['status'] != "Active")
   <a onclick="window.location.href = 'logout.php';"class="w3-right">Logout</a>
 </div>
 
-<div class="sidenav">
+<div class="w3-row">
+  <div class="w3-col w3-container m4 l3 w3-Blue">
   <?php
     error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
     include 'dbcon.php';
@@ -94,14 +95,19 @@ if($_SESSION['status'] != "Active")
     </tr>
     <tr>
       <td>Deposit status: </td>
-      <td><?php if($row2[0]==null) { echo 'Inactive'; } else { echo 'Active'; } ?></td>
+      <td><?php if($row3[0]==null) { echo 'Inactive'; } else { echo 'Active'; } ?></td>
     </tr>
     <tr>
       <td>Loan status: </td>
-      <td><?php if($row3[0]==null) { echo 'Inactive'; } else { echo 'Active'; } ?></td>
+      <td><?php if($row2[0]==null) { echo 'Inactive'; } else { echo 'Active'; } ?></td>
   </table>
-</div>
 
+</div>
+  <div class="w3-col w3-container m8 l9">  
+    <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
+    <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
+  </div>
+</div>
 <div id="id03" class="modal">
   <?php
     error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
