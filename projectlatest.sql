@@ -88,7 +88,7 @@ CREATE TABLE `admin` (
   `adminid` decimal(10,0) unsigned NOT NULL,
   `name` varchar(45) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `bddate` date NOT NULL,
+  `bdate` date NOT NULL,
   `phone` decimal(10,0) NOT NULL,
   `email` varchar(35) NOT NULL,
   `gender` varchar(10) NOT NULL,
