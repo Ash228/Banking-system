@@ -229,10 +229,17 @@ button:hover {
 .topnav {
     background-color: rgb(25, 172, 216);
     overflow: hidden;
+<<<<<<< HEAD
 }
   
   /* Style the links inside the navigation bar */
 .topnav a {
+=======
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+>>>>>>> 4a610bf6be171842d1464d8d4b96e5b09786e1ea
     cursor: pointer;
     float: left;
     color: #f2f2f2;
@@ -240,6 +247,7 @@ button:hover {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+<<<<<<< HEAD
 }
   
 /* Change the color of links on hover */
@@ -260,6 +268,28 @@ button:hover {
 }
   
 .dropdown .dropbtn {
+=======
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: rgba(56, 221, 250, 0.63);
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #34f5fc9f;
+    color: rgba(47, 236, 243, 0.733);
+  }
+
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+>>>>>>> 4a610bf6be171842d1464d8d4b96e5b09786e1ea
     font-size: 17px;    
     border: none;
     outline: none;
@@ -268,24 +298,37 @@ button:hover {
     background-color: inherit;
     font-family: inherit;
     margin: 0;
+<<<<<<< HEAD
 }
   
 .dropdown-content {
+=======
+  }
+  
+  .dropdown-content {
+>>>>>>> 4a610bf6be171842d1464d8d4b96e5b09786e1ea
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+<<<<<<< HEAD
 }
   
 .dropdown-content a {
+=======
+  }
+  
+  .dropdown-content a {
+>>>>>>> 4a610bf6be171842d1464d8d4b96e5b09786e1ea
     float: none;
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
+<<<<<<< HEAD
 }
 
 .dropdown-content a:hover {
@@ -336,3 +379,23 @@ button:hover {
     .sidenav {padding-top: 15px;}
     .sidenav span {font-size: 18px;}
 }
+=======
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+>>>>>>> 4a610bf6be171842d1464d8d4b96e5b09786e1ea
