@@ -12,6 +12,15 @@ if($_SESSION['status'] != "Active")
   <link rel="stylesheet" type="text/css" href="s3.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body{
+    background-image : url('business-data.png');
+    background-repeat : no-repeat;
+    background-attachment: fixed;
+    background-size: 60% 90%;
+    background-position : bottom right;
+  }
+  </style>
 	<script>
 		/* Open when someone clicks on the span element */
 		function openNav() {
@@ -85,8 +94,8 @@ if($_SESSION['status'] != "Active")
   ?>
 
   <br>
-  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.png" alt="profile" class="w3-center" style="padding-left:60px">'; }
-        else { echo '<img src="female.png" alt="profile" class="w3-center" style="padding-left:60px">';} ?><br><br>
+  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.jpg" alt="profile" class="w3-center" style="padding-left:60px">'; }
+        else { echo '<img src="female.jpg" alt="profile" class="w3-center" style="padding-left:60px">';} ?><br><br>
   <table class="w3-right-align"> 
     <tr>
       <td>Name:</td>

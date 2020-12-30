@@ -11,6 +11,15 @@ if($_SESSION['status'] != "Active")
 	<link rel="stylesheet" type="text/css" href="s3.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body{
+    background-image : url('data-center.png');
+    background-repeat : no-repeat;
+    background-attachment: fixed;
+    background-size: 60% 80%;
+    background-position : bottom right;
+  }
+  </style>
 </head>
     <body class="background-image: url('admin-bg.jpg');">
       <div class="topnav">
@@ -60,8 +69,8 @@ if($_SESSION['status'] != "Active")
     mysqli_close($db);
   ?>
 
-  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.png" alt="profile" class="w3-center" >'; }
-        else { echo '<img src="female.png" alt="profile" class="w3-center">';} ?><br><br>
+  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.jpg" alt="profile" class="w3-center" >'; }
+        else { echo '<img src="female.jpg" alt="profile" class="w3-center">';} ?><br><br>
   <table class="w3-right-align"> 
     <tr>
       <td>Name:</td>
