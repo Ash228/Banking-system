@@ -15,6 +15,7 @@
             <p>Banking System</p>
         </div>
         <div class='w3-bar w3-third nav w3-large'>
+            <a href='#' class='w3-bar-item w3-right about-us'>Contact</a>
             <a onclick="document.getElementById('aboutUs').style.display='block'" class='w3-bar-item w3-right about-us'>About Us</a>
             <a onclick="document.getElementById('id05').style.display='block'"class="w3-bar-item w3-right about-us">Admin Login</a>
             
@@ -25,11 +26,11 @@
             <!--<div class="w3-container">
                 <img class="w3-image" src="cust.jpg" style="height:200px;width:150px">
             </div>-->
-            <div onclick="document.getElementById('id01').style.display='block'" class='w3-third w3-card-4 w3-padding w3-round-xlarge' style="top:25%; margin-right:20px;margin-left:100px; margin-bottom:10px; cursor:pointer">
+            <div onclick="document.getElementById('id01').style.display='block'" class='w3-third w3-card-2 w3-padding w3-round-xlarge' style="top:25%; margin-right:20px;margin-left:100px; margin-bottom:10px; cursor:pointer">
                 <img class="w3-image" src="emp.png" style="height:200px;width:150px"><br/>
                 <a class='w3-center'>Login as Employee</a><br/>
             </div>
-            <div onclick="document.getElementById('id02').style.display='block'"class="w3-third w3-card-4 w3-padding w3-round-xlarge" style="top:25%; cursor:pointer;">
+            <div onclick="document.getElementById('id02').style.display='block'"class="w3-third w3-card-2 w3-padding w3-round-xlarge" style="top:25%; cursor:pointer;">
                 <img class="w3-image w3-margin-left" src="cust.jpg" style="height:200px;width:150px"><br/>
                 <a class='w3-center'>Login as Customer</a><br/>
             </div>
@@ -47,6 +48,7 @@
             laborum.
         </p>
     </div>
+
 
     <div id="id01" class="modal">
 
