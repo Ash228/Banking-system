@@ -23,6 +23,15 @@ if($_SESSION['status'] != "Active")
 			document.getElementById("myNav").style.width = "0%";
 		}
 	</script>
+  <style>
+    body {
+      background-image: url('customer-bg.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      /*background-position: right;*/
+    }
+  </style>
 </head>
 <body>
 
@@ -54,7 +63,7 @@ if($_SESSION['status'] != "Active")
 </div>
 
 <div class="w3-row">
-  <div class="w3-col w3-container m4 l3 w3-Blue">
+  <div class="w3-col w3-container m4 l3 w3-blue" style="max-width: 340px">
   <?php
     error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
     include 'dbcon.php';
@@ -75,9 +84,10 @@ if($_SESSION['status'] != "Active")
     mysqli_close($db);
   ?>
 
-  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.jpg" alt="profile" class="avatar">'; }
-        else { echo '<img src="female.jpg" alt="profile" class="avatar">';} ?><br>
-  <table> 
+  <br>
+  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.png" alt="profile" class="w3-center" style="padding-left:60px">'; }
+        else { echo '<img src="female.png" alt="profile" class="w3-center" style="padding-left:60px">';} ?><br><br>
+  <table class="w3-right-align"> 
     <tr>
       <td>Name:</td>
       <td><?php echo "$row1[0]" ?></td>
@@ -102,12 +112,6 @@ if($_SESSION['status'] != "Active")
       <td><?php if($row2[0]==null) { echo 'Inactive'; } else { echo 'Active'; } ?></td>
   </table>
 
-</div>
-  <div class="w3-col w3-container m8 l9">  
-    <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
-    <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 9 on a large screen.</p>
-  </div>
-</div>
 <div id="id03" class="modal">
   <?php
     error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
@@ -270,12 +274,8 @@ if($_SESSION['status'] != "Active")
           <label for="bdate"><b>Birth date</b></label><br>
           <input type="date" name="bdate" ><br>
 		  
-		      <label for="gender"><b>Gender</b></label><br>
-          <select id="gender" name="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+		  <label for="bdate"><b>Gender</b></label><br>
+          <input type="text" name="gender" ><br>
 
           <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
     </div>
