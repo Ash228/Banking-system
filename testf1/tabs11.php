@@ -69,8 +69,13 @@ if($_SESSION['status'] != "Active")
     mysqli_close($db);
   ?>
 
+<<<<<<< HEAD
   <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.jpg" alt="profile" class="w3-center" >'; }
         else { echo '<img src="female.jpg" alt="profile" class="w3-center">';} ?><br><br>
+=======
+  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.png" alt="profile" class="w3-center" style="padding-left: 20px>'; }
+        else { echo '<img src="female.png" alt="profile" class="w3-center" style="padding-left: 20px>';} ?><br><br>
+>>>>>>> bb55a609c6fb4c8dc169d6b3053af29b08c9b07d
   <table class="w3-right-align"> 
     <tr>
       <td>Name:</td>
