@@ -178,11 +178,13 @@ span.psw {
 
 .heading{
     font-size:30px;
+    background-color:  rgb(25, 172, 216);
 }
 
 .about-us{
     cursor: pointer;
 }
 .about-us:hover{
-    text-decoration: darkcyan;
+    text-decoration: underline;
+    color: rgb(255, 255, 255);
 }
