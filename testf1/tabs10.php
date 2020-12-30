@@ -154,8 +154,11 @@ if($_SESSION['status'] != "Active")
                     <input type="date"  placeholder="Enter date of birth" name="bdate" ><br>
 		    
 		                <label for="gender"><b>Gender</b></label><br>
-                    <input type="text" placeholder="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" name="gender" ><br>
-
+                    <select id="gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    </select>
 
                     <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
                   </div>
@@ -271,8 +274,11 @@ if($_SESSION['status'] != "Active")
             <input type="date" placeholder="Enter birth date" name="bdate" required><br>
 
             <label for="gender"><b>Gender</b></label><br>
-            <input type="text" placeholder="Enter gender" name="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
-
+            <select id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
             <label for="accno"><b>Account number</b></label><br>
             <input type="number" placeholder="Enter account number" name="accno" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" minlength="13" required><br>
 
@@ -340,8 +346,11 @@ if($_SESSION['status'] != "Active")
             <input type="date" placeholder="Enter birth date" name="bdate" required><br>
 
             <label for="gender"><b>Gender</b></label><br>
-            <input type="text" placeholder="Enter gender" name="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
-            
+            <select id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
             <label for="role"><b>Role</b></label><br>
             <input type="text" placeholder="Enter role" name="role" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" required><br>
 

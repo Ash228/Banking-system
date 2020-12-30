@@ -7,13 +7,22 @@ if($_SESSION['status'] != "Active")
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
 	<link rel="stylesheet" type="text/css" href="s3.css" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+body {
+  background-image: url('admin-bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 50% 50%;
+  background-position: right;
+}
+</style>
 </head>
-    <body>
+    <body >
       <div class="topnav">
-        <br><br>
         <div class="dropdown">
     <button class="dropbtn">Profile
       <i class="fa fa-caret-down"></i>
@@ -44,7 +53,49 @@ if($_SESSION['status'] != "Active")
     <a onclick="document.getElementById('id03').style.display='block'" >Assign Manager to Branch</a> 
     </div>
     </div> <a onclick="window.location.href = 'logout.php';"class="w3-right">Logout</a> </div>
-  </div>  
+  </div>
+  
+  <div class="w3-row">
+  <div class="w3-col w3-container m4 l3 w3-blue" style="max-width: 280px">
+  <?php
+    error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
+    include 'dbcon.php';
+    $adminid = $_SESSION['adminid'];
+    //prevent mysql injection
+    $adminid= stripcslashes($adminid);
+    $adminid = mysqli_real_escape_string($db, $adminid);
+    $query = "SELECT name, phone, gender from admin where adminid='$adminid'";
+    $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
+    $row1 = mysqli_fetch_array($result);
+    $query = "SELECT (SELECT count(*) from employee) as e, (SELECT count(*) from customer) as c";
+    $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
+    $row2 = mysqli_fetch_array($result);
+    mysqli_close($db);
+  ?>
+
+  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.jpg" alt="profile" class="w3-circle w3-center">'; }
+        else { echo '<img src="female.jpg" alt="profile" class="w3-circle w3-center">';} ?><br><br>
+  <table class="w3-right-align"> 
+    <tr>
+      <td>Name:</td>
+      <td><?php echo "     $row1[0]" ?></td>
+    </tr>
+    <tr> 
+      <td>Phone: </td>
+    <td><?php echo "      $row1[1]" ?></td>
+    </tr>
+    <tr>
+      <td>Employee count: </td>
+      <td><?php echo "$row2[0]" ?></td>
+    </tr>
+    <tr>
+      <td>Customer count: </td>
+      <td><?php echo "$row2[1]" ?></td>
+  </table>
+
+</div>
+
+
     <?php
         error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
           include 'dbcon.php';
@@ -88,7 +139,7 @@ if($_SESSION['status'] != "Active")
                 <input type="email" value="<?php echo "$row[5]"; ?>" name="mail"disabled><br>
 
                 <label for="gender"><b>Gender</b></label><br>
-                <input type="gender" value="<?php echo "$row[6]"; ?>" name="gender"disabled><br>
+                <input type="text" value="<?php echo "$row[6]"; ?>" name="gender"disabled><br>
 
               </div>
               <div class="container" style="background-color:#f1f1f1">
@@ -117,8 +168,11 @@ if($_SESSION['status'] != "Active")
                     <input type="email" placeholder="Enter email id" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35"  name="email"><br>
 
                     <label for="gender"><b>Gender</b></label><br>
-                    <input type="text" placeholder="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10"  name="gender" ><br>
-
+                    <select id="gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    </select>
                     <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
                   </div>
                   <div class="container" style="background-color:#f1f1f1">
@@ -207,8 +261,11 @@ if($_SESSION['status'] != "Active")
             <input type="date" placeholder="Enter birth date" name="bdate" required><br>
 
             <label for="gender"><b>Gender</b></label><br>
-            <input type="text" placeholder="Enter gender" name="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
-            
+            <select id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
             <label for="role"><b>Role</b></label><br>
             <input type="text" placeholder="Enter role" name="role" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" required><br>
 
@@ -257,6 +314,10 @@ if($_SESSION['status'] != "Active")
           </div>
           <div class="container">
             <h3 style="text-align: center; font-size: 20px; ">Modify Employee Details</h3>
+            <p>
+              Enter the details you wish to modify(Employee id cannot be modified)
+              * indicates required fields
+            </p>
             <label for="empid"><b>Employee id </b></label><br>
             <input type="number" placeholder="*Enter Employee id" name="empid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" minlength="10" required><br>
 
@@ -276,8 +337,11 @@ if($_SESSION['status'] != "Active")
             <input type="date" placeholder="Enter birth date" name="bdate" ><br>
 
             <label for="gender"><b>Gender</b></label><br>
-            <input type="text" placeholder="Enter gender" name="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" ><br>
-            
+            <select id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
             <label for="role"><b>Role</b></label><br>
             <input type="text" placeholder="Enter role" name="role" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" ><br>
 
@@ -288,10 +352,6 @@ if($_SESSION['status'] != "Active")
             <input type="text" placeholder="Enter Branch IFSC" name="ifsc" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11" minlength="11"><br>
 
             <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
-            <p>
-              Enter the details you wish to modify(Employee id cannot be modified)
-              * indicates required fields
-            </p>
 
           </div>
           <div class="container" style="background-color:#f1f1f1">

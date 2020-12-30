@@ -270,8 +270,12 @@ if($_SESSION['status'] != "Active")
           <label for="bdate"><b>Birth date</b></label><br>
           <input type="date" name="bdate" ><br>
 		  
-		  <label for="bdate"><b>Gender</b></label><br>
-          <input type="text" name="gender" ><br>
+		      <label for="gender"><b>Gender</b></label><br>
+          <select id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
 
           <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
     </div>
