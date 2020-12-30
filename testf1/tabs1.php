@@ -12,16 +12,34 @@ if($_SESSION['status'] != "Active")
   <link rel="stylesheet" type="text/css" href="s3.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		/* Open when someone clicks on the span element */
+		function openNav() {
+			document.getElementById("myNav").style.width = "100%";
+		}
+
+		/* Close when someone clicks on the "x" symbol inside the overlay */
+		function closeNav() {
+			document.getElementById("myNav").style.width = "0%";
+		}
+	</script>
 </head>
 <body>
 
 <div class="topnav">
   <a onclick="document.getElementById('id01').style.display='block'" >Account Info</a>
   <a onclick="document.getElementById('id03').style.display='block'" >Deposit Info</a>
-  <a onclick="document.getElementById('id05').style.display='block'" >View Profile</a>
-  <a onclick="document.getElementById('id02').style.display='block'" >Update Info</a> 
+  <script>/*<a onclick="document.getElementById('id05').style.display='block'" >View Profile</a>
+  <a onclick="document.getElementById('id02').style.display='block'" >Update Info</a> */</script>
   <div class="dropdown">
-    <button class="dropbtn">Reports<i class="fa fa-caret-down"></i> </button>
+    <button class="dropbtn">Profile<i class="fa fa-caret-down"></i></button>
+    <div class="dropdown-content">
+      <a onclick="document.getElementById('id05').style.display='block'" >View Profile</a>
+      <a onclick="document.getElementById('id02').style.display='block'" >Update Profile</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Reports<i class="fa fa-caret-down"></i></button>
     <div class="dropdown-content"> 
       <a href="fullrep.php">Account Transaction Report</a> 
       <a href="tday.php">Account Transactions in last 30 days</a> 
@@ -35,6 +53,55 @@ if($_SESSION['status'] != "Active")
   <a onclick="window.location.href = 'logout.php';"class="w3-right">Logout</a>
 </div>
 
+<div class="sidenav">
+  <?php
+    error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
+    include 'dbcon.php';
+    $custid = $_SESSION['custid'];
+    //prevent mysql injection
+    $custid= stripcslashes($custid);
+    $custid = mysqli_real_escape_string($db, $custid);
+    $query = "SELECT c.name, c.phone, c.gender, b.name, a.blocked from customer c, branch b, account a
+              WHERE c.custid='$custid' and a.custid='$custid' and b.ifsc=a.ifsc";
+    $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
+    $row1 = mysqli_fetch_array($result);
+    $query = "SELECT idloan from loan where custid='$custid'";
+    $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
+    $row2 = mysqli_fetch_array($result);
+    $query = "SELECT iddeposit from deposits where custid='$custid'";
+    $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
+    $row3 = mysqli_fetch_array($result);
+    mysqli_close($db);
+  ?>
+
+  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.jpg" alt="profile" class="avatar">'; }
+        else { echo '<img src="female.jpg" alt="profile" class="avatar">';} ?><br>
+  <table> 
+    <tr>
+      <td>Name:</td>
+      <td><?php echo "$row1[0]" ?></td>
+    </tr>
+    <tr> 
+      <td>Phone: </td>
+    <td><?php echo "$row1[1]" ?></td>
+    </tr>
+    <tr>
+      <td>Branch: </td>
+      <td><?php echo "$row1[3]" ?></td>
+    <tr>
+      <td>Account status: </td>
+      <td><?php if($row1[4]==0) { echo 'Open'; } else { echo 'Blocked'; } ?></td>
+    </tr>
+    <tr>
+      <td>Deposit status: </td>
+      <td><?php if($row2[0]==null) { echo 'Inactive'; } else { echo 'Active'; } ?></td>
+    </tr>
+    <tr>
+      <td>Loan status: </td>
+      <td><?php if($row3[0]==null) { echo 'Inactive'; } else { echo 'Active'; } ?></td>
+  </table>
+</div>
+
 <div id="id03" class="modal">
   <?php
     error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
@@ -43,7 +110,6 @@ if($_SESSION['status'] != "Active")
 	  $depid = $_SESSION['depid'];
     //prevent mysql injection
     $custid= stripcslashes($custid);
-
     $custid = mysqli_real_escape_string($db, $custid);
     $query = "select * from deposits where custid='$custid' and iddeposit='$depid'" ;
     $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
@@ -66,7 +132,7 @@ if($_SESSION['status'] != "Active")
       <label><b>Amount</b></label><br>
       <input type="number" value= "<?php echo "$row[5]"; ?>" disabled><br>
 
-		<label><b>Period(years)</b></label><br>
+		  <label><b>Period(years)</b></label><br>
       <input type="number" value= "<?php echo "$row[1]"; ?>" disabled><br>
 	  
       <label><b>Interest</b></label><br>
@@ -97,7 +163,6 @@ if($_SESSION['status'] != "Active")
     $custid = mysqli_real_escape_string($db, $custid);
     $accno = mysqli_real_escape_string($db, $accno);
     $query = "select balance, interest,ifsc from account where custid=$custid and accno=$accno" ;
-
     $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
     $row = mysqli_fetch_array($result);
     mysqli_close($db);
@@ -285,6 +350,23 @@ if($_SESSION['status'] != "Active")
     </div>
 
   </form>
+</div>
+
+
+    <!-- The overlay -->
+<div id="myNav" class="overlay">
+
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <a href="fullrep.php">Account Report</a>
+    <a href="tday.php">Account Report Last 30 days</a>
+    <a href="fday.php">Account Report Last 15 days</a>
+	<a href="deprep.php">Deposit Interest Report</a>
+  </div>
+
 </div>
 
 
