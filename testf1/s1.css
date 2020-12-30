@@ -184,8 +184,10 @@ span.psw {
 .about-us{
     color: white;
     cursor: pointer;
+    text-decoration: none;
 }
 .about-us:hover{
+    color: #353535;
     text-decoration: underline;
-    color: black;
 }
+
