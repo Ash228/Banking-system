@@ -145,7 +145,7 @@ if($_SESSION['status'] != "Active")
                     <input type="text" placeholder="Enter Address" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="100" name="address" ><br>
 
                     <label for="phone"><b>Phone number</b></label><br>
-                    <input type="number" placeholder="Enter phone number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" name="phone" ><br>
+                    <input type="number" placeholder="Enter phone number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" minlength="10" name="phone" ><br>
 
                     <label for="email"><b>Email id</b></label><br>
                     <input type="email" placeholder="Enter email id" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35"  name="email"><br>
@@ -193,7 +193,7 @@ if($_SESSION['status'] != "Active")
                 <h1 style="text-align: center; font-size: 20px; ">Insert/Update Loan Records</h1>
 
                     <label for="loanid"><b>Loan Id</b></label><br>
-                    <input type="number" placeholder="Enter loanid"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required name="loanid" ><br>
+                    <input type="number" placeholder="Enter loanid"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" minlength="10" required name="loanid" ><br>
 
                     <label for="ltype"><b>Type</b></label><br>
                     <input type="text" placeholder="Enter Loan type" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" required name="ltype" ><br>
@@ -208,7 +208,7 @@ if($_SESSION['status'] != "Active")
                     <input type="number"  placeholder="Enter Balance amount" required name="balance"><br>
 
                     <label for="custid"><b>Customer id </b></label><br>
-                    <input type="number" placeholder="Enter Customer id" name="custid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" required><br>
+                    <input type="number" placeholder="Enter Customer id" name="custid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" minlength="8" required><br>
 
                     <button type="submit" name="insert">Insert</button>
  
@@ -228,7 +228,7 @@ if($_SESSION['status'] != "Active")
                 <h1 style="text-align: center; font-size: 20px; ">Update Loan Records</h1>
 
                     <label for="loanid"><b>Loan Id</b></label><br>
-                    <input type="number" placeholder="Enter loanid"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required name="loanid" ><br>
+                    <input type="number" placeholder="Enter loanid"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" minlength="10" required name="loanid" ><br>
 
                     <label for="roi"><b>Interest rate</b></label><br>
                     <input type="number" placeholder="Enter Rate of interest"required name="roi"><br>
@@ -253,7 +253,7 @@ if($_SESSION['status'] != "Active")
           <div class="container">
             <h2 style="text-align: center; font-size: 20px; ">Add new Customer</h2>
             <label for="custid"><b>Customer id </b></label><br>
-            <input type="number" placeholder="Enter Customer id" name="custid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" required><br>
+            <input type="number" placeholder="Enter Customer id" name="custid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" minlength="8" required><br>
 
             <label for="name"><b>Name</b></label><br>
             <input type="text" placeholder="Enter full name" name="name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="45" required><br>
@@ -262,7 +262,7 @@ if($_SESSION['status'] != "Active")
             <input type="text" placeholder="Enter address" name="address" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="100" required><br>
 
             <label for="phone"><b>Phone number</b></label><br>
-            <input type="number" placeholder="Enter phone number" name="phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+            <input type="number" placeholder="Enter phone number" name="phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" minlength="10" required><br>
 
             <label for="mail"><b>Email id</b></label><br>
             <input type="email" placeholder="Enter email address" name="mail" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35" ><br>
@@ -274,7 +274,7 @@ if($_SESSION['status'] != "Active")
             <input type="text" placeholder="Enter gender" name="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
 
             <label for="accno"><b>Account number</b></label><br>
-            <input type="number" placeholder="Enter account number" name="accno" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" required><br>
+            <input type="number" placeholder="Enter account number" name="accno" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" minlength="13" required><br>
 
             <label for="balance"><b>Balance</b></label><br>
             <input type="number" placeholder="Enter balance" name="balance" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
@@ -302,7 +302,7 @@ if($_SESSION['status'] != "Active")
           <div class="container">
             <h3 style="text-align: center; font-size: 20px; ">Delete Customer</h3>
             <label for="custid"><b>Customer id</b></label><br>
-            <input type="number" placeholder="Enter customer id" name="custid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" required><br>
+            <input type="number" placeholder="Enter customer id" name="custid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" minlength="8" required><br>
 
             <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
             <br> <br>
@@ -322,7 +322,7 @@ if($_SESSION['status'] != "Active")
           <div class="container">
             <h2 style="text-align: center; font-size: 20px; ">Add new Employee</h2>
             <label for="empidi"><b>Employee id </b></label><br>
-            <input type="number" placeholder="Enter Employee id" name="empidi" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+            <input type="number" placeholder="Enter Employee id" name="empidi" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" minlength="10" required><br>
 
             <label for="name"><b>Name</b></label><br>
             <input type="text" placeholder="Enter full name" name="name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="45" required><br>
@@ -331,7 +331,7 @@ if($_SESSION['status'] != "Active")
             <input type="text" placeholder="Enter address" name="address" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="100" required><br>
 
             <label for="phone"><b>Phone number</b></label><br>
-            <input type="number" placeholder="Enter phone number" name="phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+            <input type="number" placeholder="Enter phone number" name="phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" minlength="10" required><br>
 
             <label for="mail"><b>Email id</b></label><br>
             <input type="email" placeholder="Enter email address" name="mail" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35" ><br>
@@ -372,7 +372,7 @@ if($_SESSION['status'] != "Active")
           <div class="container">
             <h3 style="text-align: center; font-size: 20px; ">Delete Employee</h3>
             <label for="empidd"><b>Employee id</b></label><br>
-            <input type="number" placeholder="Enter Employee id" name="empidd" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+            <input type="number" placeholder="Enter Employee id" name="empidd" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" minlength="10" required><br>
 
             <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
             <br> <br>
@@ -397,7 +397,7 @@ if($_SESSION['status'] != "Active")
             <h4 style="text-align: center; font-size: 20px; ">Add new Deposit</h4>
 
             <label for="custid"><b>Customer id</b></label><br>
-            <input type="number" placeholder="Enter customer id" name="custid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" required><br>
+            <input type="number" placeholder="Enter customer id" name="custid" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" minlength="8" required><br>
 
 
 			<label for="accno"><b>Period(years)</b></label><br>
