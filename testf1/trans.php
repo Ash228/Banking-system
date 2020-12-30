@@ -31,6 +31,11 @@ $mpind = $row[0];
 $result = mysqli_query($db, "SELECT blocked FROM account WHERE accno = '$accno'") or die('SQL Error: ' . mysqli_error($db));
 $row  = mysqli_fetch_array($result);
 $blocked = $row[0];
+$result = mysqli_query($db, "SELECT ifsc FROM account WHERE accno = '$accno'") or die('SQL Error: ' . mysqli_error($db));
+$row  = mysqli_fetch_array($result);
+$oifsc = $row[0];
+if($tifsc==$ifsc)
+{
 if($blocked == 0)
 {
 if ($mpin == $mpind) {
@@ -93,6 +98,10 @@ if ($mpin == $mpind) {
 }
 else{
     $msg = "Account blocked, please contact branch";
+    echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
+    header("Refresh: 5,url=tabs1.php");
+}}else{
+    $msg = "Wrong IFSC code";
     echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
     header("Refresh: 5,url=tabs1.php");
 }
