@@ -33,13 +33,13 @@ if($_SESSION['status'] != "Active")
 		}
 	</script>
   <style>
-    body {
-      background-image: url('customer-bg.jpg');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-      /*background-position: right;*/
-    }
+  body{
+    background-image : url('business-data.png');
+    background-repeat : no-repeat;
+    background-attachment: fixed;
+    background-size: 50% 90%;
+    background-position : bottom right;
+  }
   </style>
 </head>
 <body>

@@ -13,10 +13,10 @@ if($_SESSION['status'] != "Active")
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
   body{
-    background-image : url('business-data.png');
+    background-image : url('graphs.png');
     background-repeat : no-repeat;
     background-attachment: fixed;
-    background-size: 60% 90%;
+    background-size: 50% 90%;
     background-position : bottom right;
   }
   </style>
