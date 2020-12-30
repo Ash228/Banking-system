@@ -9,11 +9,11 @@ if($_SESSION['status'] != "Active")
 <head>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
 	<link rel="stylesheet" type="text/css" href="s3.css" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
     <body>
       <div class="topnav">
-        <br><br>
         <div class="dropdown">
     <button class="dropbtn">Profile
       <i class="fa fa-caret-down"></i>
@@ -48,7 +48,7 @@ if($_SESSION['status'] != "Active")
 
     </div>
   </div>  
-                <a onclick="document.getElementById('id06').style.display='block'" >Block/Unblock Transaction</a>  
+        <a onclick="document.getElementById('id06').style.display='block'" >Block/Unblock Transaction</a>  
         <a onclick="document.getElementById('id03').style.display='block'" >Create new Deposit</a>  
         <div class="dropdown">
     <button class="dropbtn">Loans
@@ -62,21 +62,48 @@ if($_SESSION['status'] != "Active")
      <div class="dropdown">
             <button class="dropbtn">Reports <i class="fa fa-caret-down"></i> </button>
             <div class="dropdown-content"> <a href="empfullrep.php">Account Transaction Report</a> <a href="etday.php">Account Transactions in last 30 days</a> <a href="efday.php">Account Transactions in last 15 days</a> <a href="edeprep.php">Interest Added to Deposits</a> <a href="loanrep.php">Loan Report</a> </div>
-        </div> <a onclick="window.location.href = 'logout.php';">Logout</a> </div>
-      <div class='dash'>
-    <?php
-        error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
-          include 'dbcon.php';
-          $empid = $_SESSION['empid'];
-          $empid = mysqli_real_escape_string($db, $empid);
-          $query = "SELECT * from employee where empid='$empid'" ;
-          $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
-          $row = mysqli_fetch_array($result);
-        ?>
-        <h2 style="text-align: center; font-size: 20px; ">D</h2>
-                <h5> <?php echo " $row[0] "; ?></h5>
-                <br>
-    </div>
+        </div> <a onclick="window.location.href = 'logout.php';" class="w3-right">Logout</a> </div>
+
+    <div class="w3-row">
+  <div class="w3-col w3-container m4 l3 w3-blue" style="max-width: 300px">
+  <?php
+    error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
+    include 'dbcon.php';
+    $empid = $_SESSION['empid'];
+    //prevent mysql injection
+    $empid= stripcslashes($empid);
+    $empid = mysqli_real_escape_string($db, $empid);
+    $query = "SELECT e.name, e.phone, e.gender, b.name from employee e, branch b where e.empid='$empid' and b.ifsc=e.ifsc";
+    $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
+    $row1 = mysqli_fetch_array($result);
+    $query = "SELECT count(*) from account a where a.ifsc=(SELECT ifsc from employee where empid='$empid')";
+    $result = mysqli_query($db, $query) or die('SQL Error: ' . mysqli_error($db));
+    $row2 = mysqli_fetch_array($result);
+    mysqli_close($db);
+  ?>
+
+    <br>
+  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.png" alt="profile" class="w3-center" style="padding-left: 40px">'; }
+        else { echo '<img src="female.png" alt="profile" class="w3-center" style="padding-left: 40px" >';} ?><br><br>
+  <table class="w3-right-align"> 
+    <tr>
+      <td>Name:</td>
+      <td><?php echo "$row1[0]" ?></td>
+    </tr>
+    <tr> 
+      <td>Phone: </td>
+    <td><?php echo "$row1[1]" ?></td>
+    </tr>
+    <tr>
+      <td>Branch: </td>
+      <td><?php echo "$row1[3]" ?></td>
+    </tr>
+    <tr>
+      <td>Customers: </td>
+      <td><?php echo "$row2[0]" ?></td>
+  </table>
+
+</div>
       <div id="id04" class="modal">
         <?php
         error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
@@ -154,11 +181,8 @@ if($_SESSION['status'] != "Active")
                     <input type="date"  placeholder="Enter date of birth" name="bdate" ><br>
 		    
 		                <label for="gender"><b>Gender</b></label><br>
-                    <select id="gender" name="gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                    </select>
+                    <input type="text" placeholder="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" name="gender" ><br>
+
 
                     <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
                   </div>
@@ -274,11 +298,8 @@ if($_SESSION['status'] != "Active")
             <input type="date" placeholder="Enter birth date" name="bdate" required><br>
 
             <label for="gender"><b>Gender</b></label><br>
-            <select id="gender" name="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+            <input type="text" placeholder="Enter gender" name="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+
             <label for="accno"><b>Account number</b></label><br>
             <input type="number" placeholder="Enter account number" name="accno" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" minlength="13" required><br>
 
@@ -346,11 +367,8 @@ if($_SESSION['status'] != "Active")
             <input type="date" placeholder="Enter birth date" name="bdate" required><br>
 
             <label for="gender"><b>Gender</b></label><br>
-            <select id="gender" name="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+            <input type="text" placeholder="Enter gender" name="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+            
             <label for="role"><b>Role</b></label><br>
             <input type="text" placeholder="Enter role" name="role" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" required><br>
 

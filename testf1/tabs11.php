@@ -11,17 +11,8 @@ if($_SESSION['status'] != "Active")
 	<link rel="stylesheet" type="text/css" href="s3.css" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-body {
-  background-image: url('admin-bg.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 50% 50%;
-  background-position: right;
-}
-</style>
 </head>
-    <body >
+    <body class="background-image: url('admin-bg.jpg');">
       <div class="topnav">
         <div class="dropdown">
     <button class="dropbtn">Profile
@@ -34,9 +25,7 @@ body {
         </div>
     </div> 
   <div class="dropdown">
-    <button class="dropbtn">Employee
-      <i class="fa fa-caret-down"></i>
-    </button>
+    <button class="dropbtn">Employee<i class="fa fa-caret-down"></i></button>
     <div class="dropdown-content">
     <a onclick="document.getElementById('id06').style.display='block'" >Add new Employee</a> 
     <a onclick="document.getElementById('id07').style.display='block'" >Delete Employee</a> 
@@ -44,9 +33,7 @@ body {
     </div>
   </div>  
   <div class="dropdown">
-    <button class="dropbtn">Add/Remove/Modify Branch
-      <i class="fa fa-caret-down"></i>
-    </button>
+    <button class="dropbtn">Add/Remove/Modify Branch<i class="fa fa-caret-down"></i></button>
     <div class="dropdown-content">
     <a onclick="document.getElementById('id01').style.display='block'" >Add new Branch</a> 
     <a onclick="document.getElementById('id02').style.display='block'" >Delete Branch</a> 
@@ -54,7 +41,7 @@ body {
     </div>
     </div> <a onclick="window.location.href = 'logout.php';"class="w3-right">Logout</a> </div>
   </div>
-  
+
   <div class="w3-row">
   <div class="w3-col w3-container m4 l3 w3-blue" style="max-width: 280px">
   <?php
@@ -73,16 +60,16 @@ body {
     mysqli_close($db);
   ?>
 
-  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.jpg" alt="profile" class="w3-circle w3-center">'; }
-        else { echo '<img src="female.jpg" alt="profile" class="w3-circle w3-center">';} ?><br><br>
+  <?php if(strcmp($row1[2], "Male")==0) { echo '<img src="male.png" alt="profile" class="w3-center" >'; }
+        else { echo '<img src="female.png" alt="profile" class="w3-center">';} ?><br><br>
   <table class="w3-right-align"> 
     <tr>
       <td>Name:</td>
-      <td><?php echo "     $row1[0]" ?></td>
+      <td><?php echo "$row1[0]" ?></td>
     </tr>
     <tr> 
       <td>Phone: </td>
-    <td><?php echo "      $row1[1]" ?></td>
+    <td><?php echo "$row1[1]" ?></td>
     </tr>
     <tr>
       <td>Employee count: </td>
@@ -94,7 +81,6 @@ body {
   </table>
 
 </div>
-
 
     <?php
         error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
@@ -168,11 +154,8 @@ body {
                     <input type="email" placeholder="Enter email id" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35"  name="email"><br>
 
                     <label for="gender"><b>Gender</b></label><br>
-                    <select id="gender" name="gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                    </select>
+                    <input type="text" placeholder="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10"  name="gender" ><br>
+
                     <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
                   </div>
                   <div class="container" style="background-color:#f1f1f1">
@@ -261,11 +244,8 @@ body {
             <input type="date" placeholder="Enter birth date" name="bdate" required><br>
 
             <label for="gender"><b>Gender</b></label><br>
-            <select id="gender" name="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+            <input type="text" placeholder="Enter gender" name="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+            
             <label for="role"><b>Role</b></label><br>
             <input type="text" placeholder="Enter role" name="role" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" required><br>
 
@@ -337,11 +317,8 @@ body {
             <input type="date" placeholder="Enter birth date" name="bdate" ><br>
 
             <label for="gender"><b>Gender</b></label><br>
-            <select id="gender" name="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+            <input type="text" placeholder="Enter gender" name="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" ><br>
+            
             <label for="role"><b>Role</b></label><br>
             <input type="text" placeholder="Enter role" name="role" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="20" ><br>
 
