@@ -105,7 +105,7 @@ if($_SESSION['status'] != "Active")
                 <h1 style="text-align: center; font-size: 20px; ">Edit Profile</h1>
 
                     <label for="name"><b>Name</b></label><br>
-                    <input type="text" placeholder="Enter Name"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="45" required name="name" ><br>
+                    <input type="text" placeholder="Enter Name"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="45"  name="name" ><br>
 
                     <label for="bdate"><b>Birth date</b></label><br>
                     <input type="date"  placeholder="Enter date of birth" name="bdate" ><br>
@@ -113,8 +113,8 @@ if($_SESSION['status'] != "Active")
                     <label for="phone"><b>Phone number</b></label><br>
                     <input type="number" placeholder="Enter phone number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" minlength="10" name="phone" ><br>
 
-                    <label for="mail"><b>Email id</b></label><br>
-                    <input type="email" placeholder="Enter email id" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35"  name="mail"><br>
+                    <label for="email"><b>Email id</b></label><br>
+                    <input type="email" placeholder="Enter email id" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35"  name="email"><br>
 
                     <label for="gender"><b>Gender</b></label><br>
                     <input type="text" placeholder="gender" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10"  name="gender" ><br>

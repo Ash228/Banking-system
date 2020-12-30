@@ -19,14 +19,14 @@ $query = "UPDATE employee SET";
 $comma = " ";
 foreach($_POST as $key => $val) {
     if( !empty($val) && $key!="empid") {
-        $query .= $comma . $key . " = " . mysqli_real_escape_string($db, $val);
-        $comma = ", ";
+        $query .= $comma . $key . " = '" . mysqli_real_escape_string($db, $val);
+        $comma = "', ";
        // echo "<script type=\"text/javascript\">alert(\"$val,$key\");</script>";
         $var .= 's';
         array_push($val_arr, $val);
     }
 }
-$query = $query . " WHERE empid = '".$empid."' ";
+$query = $query . "' WHERE empid = '".$empid."' ";
 
 if ($stmti = mysqli_prepare($db, $query)) {
     //mysqli_stmt_bind_param($stmti, "ississs", $empid, $name, $address, $phone, $mail, $bdate, $gender);

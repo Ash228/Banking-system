@@ -19,15 +19,17 @@ $query = "UPDATE customer SET";
 $comma = " ";
 foreach($_POST as $key => $val) {
     if( !empty($val) && $key!="custid") {
-        $query .= $comma . $key . " = " . mysqli_real_escape_string($db, $val);
-        $comma = ", ";
+       //echo "<script type=\"text/javascript\">alert(\"$val\");</script>";
+        $query .= $comma . $key . " = '" . mysqli_real_escape_string($db, $val);
+        $comma = "', ";
        // echo "<script type=\"text/javascript\">alert(\"$val,$key\");</script>";
         $var .= 's';
         array_push($val_arr, $val);
     }
 }
-$query = $query . " WHERE custid = '".$custid."' ";
-
+//echo "<script type=\"text/javascript\">alert(\"$query\");</script>";
+$query = $query . "' WHERE custid = '".$custid."' ";
+//echo "<script type=\"text/javascript\">alert(\"$query\");</script>";
 //$sqli  = "UPDATE customer set name='$name', address='$address', phone=$phone, email='$mail', bdate='$bdate', gender='$gender' where custid='$custid'";
 if ($stmti = mysqli_prepare($db, $query)) {
     //mysqli_stmt_bind_param($stmti, "ississs", $custid, $name, $address, $phone, $mail, $bdate, $gender);

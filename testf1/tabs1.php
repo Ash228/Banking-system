@@ -259,19 +259,19 @@ if($_SESSION['status'] != "Active")
           <input type="text" name="name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="45"><br>
 
           <label for="address"><b>Address</b></label><br>
-          <input type="text" name="address" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="100"><br>
+          <input type="text" name="address" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="100" ><br>
 
           <label for="phone"><b>Phone number</b></label><br>
-          <input type="number" name="phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10"><br>
+          <input type="number" name="phone" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" minlength = "10" ><br>
 
-          <label for="mail"><b>Email id</b></label><br>
-          <input type="email" name="mail" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35" ><br>
+          <label for="email"><b>Email id</b></label><br>
+          <input type="email" name="email" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="35" ><br>
 
           <label for="bdate"><b>Birth date</b></label><br>
-          <input type="date" name="bdate"><br>
+          <input type="date" name="bdate" ><br>
 		  
 		  <label for="bdate"><b>Gender</b></label><br>
-          <input type="text" name="gender"><br>
+          <input type="text" name="gender" ><br>
 
           <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
     </div>
@@ -293,7 +293,7 @@ if($_SESSION['status'] != "Active")
       <br>
 	 
       <label for="taccno"><b>Account number</b></label><br>
-      <input type="number" placeholder="Enter account number" name="taccno" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" minlength="11" required ><br>
+      <input type="number" placeholder="Enter account number" name="taccno" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="13" minlength="13" required ><br>
 
 		<label for="tifsc"><b>IFSC</b></label><br>
       <input type="text" placeholder="Enter branch IFSC" name="tifsc" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11" minlength="11" required><br>
@@ -346,7 +346,7 @@ if($_SESSION['status'] != "Active")
       <input type="number" placeholder="Enter amount" name="amount" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
 
 		<label for="mpin"><b>MPIN</b></label>
-        <input type="password" placeholder="Enter MPIN" name="mpin" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"maxlength="4" minlength="11" required>
+        <input type="password" placeholder="Enter MPIN" name="mpin" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"maxlength="4" minlength="4" required>
      
 	 <button type="submit">Submit</button>
     </div>
