@@ -58,7 +58,7 @@ if ($stmti = mysqli_prepare($db, $sqli)) {
     if (substr($accn, 0, 4) == substr($ifsc, -4)) {
         mysqli_stmt_bind_param($stmti, "ississss", $custid, $name, $address, $phone, $mail, $bdate, $psw, $gender);
         if (mysqli_stmt_execute($stmti)) {
-            $sql = "INSERT INTO account VALUES ($accno, $balance, '$interest',$custid,'$ifsc','$mpin')";
+            $sql = "INSERT INTO account(accno,balance,interest,custid,ifsc,mpin) VALUES ($accno, $balance, '$interest',$custid,'$ifsc','$mpin')";
             if ($stmt = mysqli_prepare($db, $sql)) {
                 mysqli_stmt_bind_param($stmt, "iisis", $accno, $balance, $interest, $custid, $ifsc,$mpin);
                 if (mysqli_stmt_execute($stmt)) {

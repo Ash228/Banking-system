@@ -12,6 +12,8 @@ $empid = mysqli_real_escape_string($db, $empid);
 $result1 = mysqli_query($db, "SELECT * FROM employee WHERE empid = '$empid'") or die('SQL Error: ' . mysqli_error($db));
 $row1 = mysqli_fetch_array($result1);
 $ifsc = $row1['ifsc'];
+echo "<script type=\"text/javascript\">alert(\"$ifsc\");</script>";
+
 $ifsc = mysqli_real_escape_string($db, $ifsc);
 
 // Attempt insert query execution

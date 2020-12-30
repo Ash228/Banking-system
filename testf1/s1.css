@@ -1,4 +1,6 @@
-body {font-family: "Raleway", sans-serif;}
+body {
+    font-family: Raleway,sans-serif;
+}
 /* Full-width input fields */
 input[type=password], input[type=number], input[type=date]{
     width: 100%;
@@ -139,29 +141,53 @@ span.psw {
 .sidenav {
     height: 100%;
     width: 100%;
-    position: fixed;
+    /*position: fixed;*/
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: rgb(255, 255, 255);
     overflow-x: hidden;
     padding-top: 50px;
 }
 
 .sidenav a {
-    padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
-    display: block;
+    color: #353535;
     text-align: center;
 }
 
+.sidenav p{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #353535;
+    display: block;
+    /*text-align: center;*/
+}
+
 .sidenav a:hover {
-    color: #f1f1f1;
+    color: #6b6b6b;
+    cursor: pointer;
 }
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+.heading{
+    font-size: 32px;
+    color: white;
+}
+
+.about-us{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+.about-us:hover{
+    color: #353535;
+    text-decoration: underline;
+}
+
