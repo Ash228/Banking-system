@@ -33,7 +33,7 @@ $row  = mysqli_fetch_array($result);
 $blocked = $row[0];
 $result = mysqli_query($db, "SELECT ifsc FROM account WHERE accno = '$accno'") or die('SQL Error: ' . mysqli_error($db));
 $row  = mysqli_fetch_array($result);
-$oifsc = $row[0];
+$ifsc = $row[0];
 if($tifsc==$ifsc)
 {
 if($blocked == 0)
