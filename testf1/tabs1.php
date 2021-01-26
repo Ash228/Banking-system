@@ -120,7 +120,8 @@ if($_SESSION['status'] != "Active")
       <td>Loan status: </td>
       <td><?php if($row2[0]==null) { echo 'Inactive'; } else { echo 'Active'; } ?></td>
   </table>
-
+</div>
+</div>
 <div id="id03" class="modal">
   <?php
     error_reporting(E_ALL ^ E_WARNING ^E_NOTICE);
