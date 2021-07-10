@@ -440,10 +440,10 @@ if($_SESSION['status'] != "Active")
             <input type="number" placeholder="Enter deposit period" name="period" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2" required><br>
             
 			<label for="balance"><b>Amount</b></label><br>
-            <input type="number" placeholder="Enter balance" name="amount" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+            <input type="number" placeholder="Enter amount" name="amount" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
 
             <label for="roi"><b>Rate of Interest</b></label><br>
-            <input type="number" placeholder="Enter balance" name="amount" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" required><br>
+            <input type="number" placeholder="Enter roi" name="roi" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2" required><br>
 
             <button type="submit" class="bu">Submit</button><button type="reset" class="bu">Reset</button>
             <br>

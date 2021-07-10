@@ -40,7 +40,9 @@ if($blocked == 0)
 {
 if ($mpin == $mpind) {
     if ($amount > $abal) {
-        echo "enter an amount less than your current balance $abal";
+        $msg = "enter an amount less than your current balance $abal";
+        echo "<script type=\"text/javascript\">alert(\"$msg\");</script>";
+        header("Refresh: 1,url=tabs1.php");
     } else {
         $sqli = "UPDATE account set balance= balance+$amount where accno=$taccno";
         if ($stmti = mysqli_prepare($db, $sqli)) {
